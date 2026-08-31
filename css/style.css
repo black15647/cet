@@ -301,3 +301,20 @@ body.reading-mode .rm-bar { display: flex; }
   .hero-right { align-items: flex-start; }
   .rm-bar { right: 12px; top: 12px; }
 }
+
+/* 听力 · 考试级 AI 配音 */
+.listen-ctrl { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 6px; }
+.listen-ctrl .btn { flex: 0 0 auto; }
+.spk { display: inline-block; font-size: 14px; line-height: 1; vertical-align: middle; opacity: .9; }
+#play-status { min-height: 18px; margin: 2px 0 10px; color: var(--brand-ink); font-size: 13px; }
+/* 播放中的句子用品牌色高亮，比原先的黄色在深色模式下更协调 */
+.sent-row.playing { background: var(--brand-soft); border-radius: 10px; }
+
+/* 听力选择题（与正式考试同题型） */
+.lq-block { padding: 14px 0; border-top: 1px solid var(--line-2); }
+.lq-block:first-of-type { border-top: none; padding-top: 4px; }
+.lq-block.exam-active { background: var(--brand-soft); border-radius: 12px; padding-left: 12px; padding-right: 12px; box-shadow: 0 0 0 2px var(--brand); }
+.lq-result { margin-top: 4px; }
+.lq-result:empty { display: none; }
+.opt.right { background: rgba(36, 138, 61, .12); border-color: var(--ok); }
+.opt.wrong { background: rgba(215, 0, 21, .1); border-color: var(--err); }

@@ -1,0 +1,782 @@
+{
+ "exportedAt": "2026-08-30T16:14:27.819Z",
+ "meta": {
+  "version": 1,
+  "VOICES": {
+   "F_NEWS": {
+    "id": "en-US-AriaNeural",
+    "gender": "F",
+    "desc": "女声·新闻播报",
+    "wpm0": 159
+   },
+   "F_TALK": {
+    "id": "en-US-JennyNeural",
+    "gender": "F",
+    "desc": "女声·自然讲述",
+    "wpm0": 163
+   },
+   "F_LECT": {
+    "id": "en-US-MichelleNeural",
+    "gender": "F",
+    "desc": "女声·学术讲座",
+    "wpm0": 167
+   },
+   "M_TALK": {
+    "id": "en-US-AndrewNeural",
+    "gender": "M",
+    "desc": "男声·自然对话",
+    "wpm0": 183
+   },
+   "M_LECT": {
+    "id": "en-US-EricNeural",
+    "gender": "M",
+    "desc": "男声·学术讲座",
+    "wpm0": 159
+   }
+  },
+  "TYPES": {
+   "news": {
+    "label": "新闻听力",
+    "wpm": 145,
+    "gap": 700,
+    "voice": "F_NEWS",
+    "mode": "single"
+   },
+   "conversation": {
+    "label": "长对话",
+    "wpm": 135,
+    "gap": 450,
+    "voice": "F_TALK",
+    "altVoice": "M_TALK",
+    "mode": "dialog"
+   },
+   "passage": {
+    "label": "短文听力",
+    "wpm": 130,
+    "gap": 650,
+    "voice": "F_TALK",
+    "mode": "single"
+   },
+   "lecture": {
+    "label": "讲座听力",
+    "wpm": 150,
+    "gap": 750,
+    "voice": "M_LECT",
+    "mode": "single"
+   }
+  },
+  "DIRECTIONS": {
+   "cet4_news": "In this section, you will hear three news reports. At the end of each news report, you will hear two or three questions. Both the news report and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "cet4_conv": "In this section, you will hear two long conversations. At the end of each conversation, you will hear four questions. Both the conversation and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "cet4_pass": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "cet6_conv": "In this section, you will hear two long conversations. At the end of each conversation, you will hear four questions. Both the conversation and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "cet6_pass": "In this section, you will hear two passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "cet6_lect": "In this section, you will hear three recordings of lectures or talks followed by three or four questions. The recordings will be played only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "ky_conv": "Directions: In this section, you will hear a conversation on an academic topic. The conversation will be spoken only once. After you hear each question, you must choose the best answer from the four choices marked A, B, C and D.",
+   "ky_lect": "Directions: In this section, you will hear a short lecture on an academic topic. The lecture will be spoken only once. After you hear each question, you must choose the best answer from the four choices marked A, B, C and D."
+  },
+  "MATERIAL": {
+   "news": "news report",
+   "conversation": "conversation",
+   "passage": "passage",
+   "lecture": "recording"
+  },
+  "ITEMS": {
+   "l1": {
+    "type": "passage",
+    "speakers": "F",
+    "dir": "cet4_pass"
+   },
+   "l2": {
+    "type": "passage",
+    "speakers": "F",
+    "dir": "cet4_pass"
+   },
+   "l3": {
+    "type": "passage",
+    "speakers": "M",
+    "dir": "cet4_pass"
+   },
+   "l4": {
+    "type": "lecture",
+    "speakers": "M",
+    "dir": "cet6_lect"
+   },
+   "l5": {
+    "type": "conversation",
+    "speakers": "FMFMFM",
+    "dir": "ky_conv"
+   },
+   "c4l01": {
+    "type": "passage",
+    "speakers": "F",
+    "dir": "cet4_pass"
+   },
+   "c4l02": {
+    "type": "passage",
+    "speakers": "M",
+    "dir": "cet4_pass"
+   },
+   "c4l03": {
+    "type": "passage",
+    "speakers": "F",
+    "dir": "cet4_pass"
+   },
+   "c4l04": {
+    "type": "passage",
+    "speakers": "M",
+    "dir": "cet4_pass"
+   },
+   "c4l05": {
+    "type": "passage",
+    "speakers": "F",
+    "dir": "cet4_pass"
+   },
+   "c4n01": {
+    "type": "news",
+    "speakers": "F",
+    "dir": "cet4_news"
+   },
+   "c4n02": {
+    "type": "news",
+    "speakers": "F",
+    "dir": "cet4_news"
+   },
+   "c4n03": {
+    "type": "news",
+    "speakers": "F",
+    "dir": "cet4_news"
+   },
+   "c4c01": {
+    "type": "conversation",
+    "speakers": "MF",
+    "dir": "cet4_conv"
+   },
+   "c4c02": {
+    "type": "conversation",
+    "speakers": "WM",
+    "dir": "cet4_conv"
+   },
+   "c6l01": {
+    "type": "lecture",
+    "speakers": "M",
+    "dir": "cet6_lect"
+   },
+   "c6l02": {
+    "type": "lecture",
+    "speakers": "F",
+    "dir": "cet6_lect"
+   },
+   "c6c01": {
+    "type": "conversation",
+    "speakers": "WM",
+    "dir": "cet6_conv"
+   }
+  }
+ },
+ "listenings": [
+  {
+   "id": "l1",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · Campus Life",
+   "title": "A New Study Corner in the Library",
+   "sentences": [
+    "Good morning, everyone. I would like to introduce the new study corner on the third floor of the library.",
+    "This area is designed for group discussions, so you may talk freely there without disturbing others.",
+    "The quiet reading rooms remain on the second floor, where silence must be kept at all times.",
+    "To book the study corner, simply scan the code on the door and choose an available time slot.",
+    "Each group may use the space for up to two hours per day.",
+    "If you have any questions, please ask the staff at the front desk."
+   ],
+   "questions": []
+  },
+  {
+   "id": "l2",
+   "exam": "cet6",
+   "label": "CET-6 短文听力 · Science",
+   "title": "Why Octopuses Are So Intelligent",
+   "sentences": [
+    "Octopuses are widely regarded as the most intelligent of all invertebrates.",
+    "Unlike humans, two thirds of an octopus's neurons are located in its arms, not in its brain.",
+    "This means each arm can solve problems and react to the environment independently.",
+    "In laboratories, octopuses have learned to open jars, navigate mazes and even recognize individual keepers.",
+    "Some researchers believe their intelligence evolved because catching prey in complex environments requires flexible thinking.",
+    "Understanding octopuses may even shed light on how intelligence can arise in a form of life very different from our own."
+   ],
+   "questions": []
+  },
+  {
+   "id": "l3",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · 健康",
+   "title": "The Benefits of Walking Meetings",
+   "sentences": [
+    "More and more companies are replacing sit-down meetings with walking meetings.",
+    "The idea is simple: instead of sitting around a table, two or three colleagues discuss work while walking outdoors.",
+    "Research suggests that walking can increase creative thinking by up to sixty per cent.",
+    "Walking meetings are especially useful for one-to-one discussions and brainstorming.",
+    "However, they are not suitable for meetings that involve detailed documents or sensitive topics.",
+    "Experts advise keeping the group small and the route familiar."
+   ],
+   "questions": []
+  },
+  {
+   "id": "l4",
+   "exam": "cet6",
+   "label": "CET-6 讲座听力 · 环境",
+   "title": "How Cities Are Adapting to Heatwaves",
+   "sentences": [
+    "Good afternoon. Today I will discuss how cities around the world are adapting to more frequent heatwaves.",
+    "One major problem is the urban heat island effect, which makes city centres several degrees hotter than surrounding areas.",
+    "Cities are responding by planting trees, painting roofs white and creating green corridors along streets.",
+    "Early warning systems have also been introduced to protect elderly residents during extreme heat.",
+    "These measures are relatively inexpensive compared with rebuilding infrastructure.",
+    "In conclusion, adaptation is no longer optional but a necessity for urban planning."
+   ],
+   "questions": []
+  },
+  {
+   "id": "l5",
+   "exam": "ky2",
+   "label": "考研英语 长对话 · 学术",
+   "title": "Choosing a Research Topic",
+   "sentences": [
+    "I have been struggling to choose a topic for my graduation thesis.",
+    "Have you considered starting from the courses you found most interesting last semester?",
+    "I enjoyed the course on consumer behaviour, but I am not sure it is practical enough.",
+    "Practicality matters, but a topic you genuinely care about will keep you motivated for months.",
+    "That makes sense. I could narrow it down to online reviews and purchasing decisions.",
+    "That is a workable focus. Check whether enough data is available before you commit to it."
+   ],
+   "questions": []
+  },
+  {
+   "id": "c4l01",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · Daily Life",
+   "title": "A Healthy Breakfast",
+   "sentences": [
+    "A healthy breakfast gives you energy for the whole morning.",
+    "Many students skip breakfast because they get up too late.",
+    "A simple meal of eggs, milk and bread is enough to keep you active.",
+    "Try to leave home ten minutes earlier so you have time to eat.",
+    "Your brain works better after a good meal."
+   ],
+   "questions": []
+  },
+  {
+   "id": "c4l02",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · Study",
+   "title": "How to Remember New Words",
+   "sentences": [
+    "Learning new words is easier when you meet them in reading.",
+    "Write the word and its example sentence in a small notebook.",
+    "Review the list for five minutes before you go to sleep.",
+    "Group similar words together to remember them faster.",
+    "In this way, new words become part of your long-term memory."
+   ],
+   "questions": []
+  },
+  {
+   "id": "c4l03",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · Travel",
+   "title": "A Weekend Trip to the Lake",
+   "sentences": [
+    "We took a bus to the lake early on Saturday morning.",
+    "The water was so clear that we could see fish swimming.",
+    "Some of us rented bikes and rode along the shore.",
+    "In the afternoon we had a picnic under a big tree.",
+    "Everyone agreed it was the best trip this month."
+   ],
+   "questions": []
+  },
+  {
+   "id": "c4l04",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · Environment",
+   "title": "Save Electricity at Home",
+   "sentences": [
+    "Turn off the lights when you leave a room.",
+    "Unplug devices that you do not use every day.",
+    "Open the window instead of using the air conditioner.",
+    "Small habits like these help lower your bill.",
+    "The earth will thank you for saving power."
+   ],
+   "questions": []
+  },
+  {
+   "id": "c4l05",
+   "exam": "cet4",
+   "label": "CET-4 短文听力 · Friendship",
+   "title": "A Friend in Need",
+   "sentences": [
+    "Last winter I fell ill and missed two weeks of school.",
+    "My friend Lisa brought me her notes every evening.",
+    "She also explained the difficult points I could not follow.",
+    "Thanks to her help, I caught up quickly after returning.",
+    "A true friend is someone who stays with you in hard times."
+   ],
+   "questions": []
+  },
+  {
+   "id": "c4n01",
+   "exam": "cet4",
+   "label": "CET-4 新闻听力 · 城建交通",
+   "title": "Subway Line 6 Opens Ahead of Schedule",
+   "sentences": [
+    "A new subway line opened in the city on Monday, three months ahead of schedule.",
+    "Line 6 runs eighteen kilometres from the northern suburbs to the central business district, with twelve stations along the way.",
+    "Officials say the line is expected to carry about two hundred thousand passengers a day and cut average travel time by nearly forty per cent.",
+    "The project began in 2021 and cost about three billion dollars, making it the largest transport investment in the history of the city.",
+    "During the first week, rides will be free so that residents can try the new service.",
+    "The transport department added that a further extension to the airport is under construction and should open in two years.",
+    "Local business owners near the new stations welcome the change, though some residents have complained about the noise during construction."
+   ],
+   "questions": [
+    {
+     "q": "What is the news report mainly about?",
+     "options": {
+      "A": "The delay of a subway project",
+      "B": "The opening of a new subway line",
+      "C": "A new airport under construction",
+      "D": "The city traffic problems"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "How many passengers is Line 6 expected to carry each day?",
+     "options": {
+      "A": "About 20,000",
+      "B": "About 120,000",
+      "C": "About 200,000",
+      "D": "About 400,000"
+     },
+     "answer": "C"
+    }
+   ]
+  },
+  {
+   "id": "c4n02",
+   "exam": "cet4",
+   "label": "CET-4 新闻听力 · 生态保护",
+   "title": "Wild Giant Panda Numbers Rise",
+   "sentences": [
+    "Scientists have recorded a sharp rise in the number of wild giant pandas, according to a report published on Thursday.",
+    "The population has grown from 1,110 in the nineteen eighties to more than 1,800 today.",
+    "The survey covered more than two thousand square kilometres of forest across three provinces and took nearly four years to complete.",
+    "Teams used camera traps and satellite images instead of counting the animals directly, which the report says gives a more reliable result.",
+    "Researchers say the increase is largely the result of better forest protection and stricter hunting laws.",
+    "A giant panda national park has also been established, connecting several reserves that were previously separated by roads and farms.",
+    "However, they warned that climate change could damage the bamboo that pandas depend on for food.",
+    "The researchers say the next step is to plant bamboo in the corridors between habitats so that isolated groups can meet and breed."
+   ],
+   "questions": [
+    {
+     "q": "What does the report say about wild giant pandas?",
+     "options": {
+      "A": "Their population has increased",
+      "B": "They are moving to new forests",
+      "C": "Their food supply has improved",
+      "D": "They are still in great danger"
+     },
+     "answer": "A"
+    },
+    {
+     "q": "What threat do the researchers mention?",
+     "options": {
+      "A": "Illegal hunting",
+      "B": "Climate change",
+      "C": "Forest fires",
+      "D": "Disease"
+     },
+     "answer": "B"
+    }
+   ]
+  },
+  {
+   "id": "c4n03",
+   "exam": "cet4",
+   "label": "CET-4 新闻听力 · 科技环保",
+   "title": "Tech Company to Use Only Renewable Energy",
+   "sentences": [
+    "A technology company announced on Wednesday that it will power all of its data centres with renewable energy by 2030.",
+    "The company says it has already reached sixty per cent and plans to build two large solar farms in the southwest.",
+    "Experts say the move could push other technology firms to follow, since data centres use huge amounts of electricity.",
+    "The two solar farms are expected to produce about nine hundred megawatts, enough to supply roughly half of the electricity the company needs.",
+    "The remainder will come from wind power under long-term contracts signed with suppliers in the north of the country.",
+    "The company added that the change will cost about four hundred million dollars but is expected to save money in the long run.",
+    "Environmental groups welcomed the announcement but said the target should be brought forward, arguing that 2030 is too late given the pace of climate change."
+   ],
+   "questions": [
+    {
+     "q": "What has the company announced?",
+     "options": {
+      "A": "It will close its data centres",
+      "B": "It will use only renewable energy by 2030",
+      "C": "It will build solar farms this year",
+      "D": "It will cut electricity use by half"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What do experts say about the move?",
+     "options": {
+      "A": "It is too expensive",
+      "B": "It may influence other companies",
+      "C": "It will reduce electricity use",
+      "D": "It should have been done earlier"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What do environmental groups think about the plan?",
+     "options": {
+      "A": "It should be carried out sooner",
+      "B": "It is too expensive to be realistic",
+      "C": "It will damage the company profits",
+      "D": "It sets a bad example for others"
+     },
+     "answer": "A"
+    }
+   ]
+  },
+  {
+   "id": "c4c01",
+   "exam": "cet4",
+   "label": "CET-4 长对话 · 校园服务",
+   "title": "Asking About Library Holiday Hours",
+   "sentences": [
+    "Excuse me, I would like to know the opening hours during the summer holidays.",
+    "We are open from nine to five on weekdays, but we close at noon on Saturdays and we are closed on Sundays.",
+    "That is shorter than I expected. Can I still borrow books on Saturday mornings?",
+    "Yes, borrowing is available whenever we are open. You just need your student card.",
+    "Good. How many books can I take out at one time?",
+    "Undergraduate students may borrow up to eight books for three weeks.",
+    "What if I need them for longer?",
+    "You can renew them twice online, but only if nobody else has reserved them.",
+    "I see. And what happens if I return a book late?",
+    "There is a fine of fifty cents a day for each book, up to a maximum of ten dollars.",
+    "That is reasonable. By the way, does the library lend out laptops during the holidays?",
+    "Yes, but only for use inside the building. You can borrow one for four hours at the front desk.",
+    "Can I book a group study room as well? We have a presentation next month.",
+    "Group rooms can be reserved online up to seven days in advance, and each session is limited to two hours.",
+    "And are e-books affected by the holiday hours?",
+    "No, the digital collection is available twenty-four hours a day, so you can download them at any time.",
+    "That is very helpful. Thank you for your time.",
+    "You are welcome. Have a good summer."
+   ],
+   "questions": [
+    {
+     "q": "What are the library opening hours on Saturdays?",
+     "options": {
+      "A": "From nine to five",
+      "B": "From nine to noon",
+      "C": "From noon to five",
+      "D": "Closed all day"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What does the man need in order to borrow books?",
+     "options": {
+      "A": "A completed application form",
+      "B": "His student card",
+      "C": "A note from his teacher",
+      "D": "A cash deposit"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "How long can undergraduate students keep the books?",
+     "options": {
+      "A": "One week",
+      "B": "Two weeks",
+      "C": "Three weeks",
+      "D": "Eight weeks"
+     },
+     "answer": "C"
+    },
+    {
+     "q": "What does the woman say about returning books late?",
+     "options": {
+      "A": "Borrowing rights will be stopped",
+      "B": "There is a fine for each day",
+      "C": "The student must renew the book online",
+      "D": "The book has to be replaced"
+     },
+     "answer": "B"
+    }
+   ]
+  },
+  {
+   "id": "c4c02",
+   "exam": "cet4",
+   "label": "CET-4 长对话 · 兼职求职",
+   "title": "Looking for a Part-time Job on Campus",
+   "sentences": [
+    "Good morning. I am looking for a part-time job on campus. Do I need to make an appointment?",
+    "No, walk-ins are fine. What kind of work are you hoping to find?",
+    "Something in the library or the student centre, preferably in the evenings.",
+    "We have two positions at the moment. One is shelving books, Monday and Wednesday evenings, six to nine.",
+    "That sounds possible. What is the other one?",
+    "It is at the sports centre reception, but it starts at six in the morning, three days a week.",
+    "That is a bit too early for me. Do the jobs pay the same?",
+    "The library job pays twelve dollars an hour, and the sports centre pays fourteen because of the early start.",
+    "I see. When can I start if I take the library job?",
+    "Training is next Monday at five, and you would start working the following week.",
+    "What are the requirements for the library position?",
+    "No previous experience is needed, but you should be able to lift boxes of books and work quietly for long periods.",
+    "How many hours a week would that be?",
+    "Six hours, since it is two evenings of three hours each. You can ask for more after the first month if you want.",
+    "And how do I apply? Is there a form?",
+    "Fill in this form and leave it with me today. We usually interview candidates on Friday and let them know by email.",
+    "That all sounds fine. I will take the library job, thank you.",
+    "Good. Do not forget the training next Monday at five."
+   ],
+   "questions": [
+    {
+     "q": "Why does the woman come to the office?",
+     "options": {
+      "A": "To make an appointment",
+      "B": "To look for a part-time job",
+      "C": "To ask about library opening hours",
+      "D": "To apply for a sports programme"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What kind of schedule does the woman prefer?",
+     "options": {
+      "A": "Early mornings",
+      "B": "Evenings",
+      "C": "Weekends",
+      "D": "Full-time hours"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "How much does the sports centre job pay?",
+     "options": {
+      "A": "Twelve dollars an hour",
+      "B": "Fourteen dollars an hour",
+      "C": "Six dollars an hour",
+      "D": "The same as the library job"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "When would the woman begin working if she takes the library job?",
+     "options": {
+      "A": "Next Monday",
+      "B": "The week after next",
+      "C": "This evening",
+      "D": "In three weeks"
+     },
+     "answer": "B"
+    }
+   ]
+  },
+  {
+   "id": "c6l01",
+   "exam": "cet6",
+   "label": "CET-6 讲座听力 · 心理学",
+   "title": "Why We Procrastinate",
+   "sentences": [
+    "Good morning. Today I want to talk about procrastination, and why intelligent people are often the worst offenders.",
+    "For a long time psychologists assumed that putting things off was mainly a problem of poor time management.",
+    "If that were true, then a better planner or a longer list of tasks should solve the problem, and most of you know from experience that it does not.",
+    "More recent research suggests something different: procrastination is essentially a failure of mood regulation, not of scheduling.",
+    "When we delay a task, we are usually not avoiding the task itself. We are avoiding the unpleasant feeling that the task produces.",
+    "A difficult report makes us feel incompetent; a difficult conversation makes us feel anxious. Putting the task off removes that feeling immediately, which is why it is so tempting.",
+    "Unfortunately, the relief is temporary. The feeling returns, usually stronger, and now it is joined by guilt.",
+    "In one study, students who were taught to forgive themselves for procrastinating before an exam actually procrastinated less before the next one.",
+    "The researchers compared them with a second group who received no such instruction, and the difference was still measurable several weeks later.",
+    "This is important because guilt tends to make people avoid the task even more, which creates a cycle that is difficult to break.",
+    "A second line of research looks at how tasks are framed.",
+    "When students were asked to plan a project in detail, they began later than those who were asked only to decide where and when they would take the first step.",
+    "The reason seems to be that detailed planning exposes how much work lies ahead, which brings the unpleasant feeling forward.",
+    "A third finding concerns the environment rather than the individual.",
+    "People who removed distractions from their workspace, or who worked in a library rather than at home, reported starting sooner without trying harder.",
+    "This suggests that willpower is overrated, and that changing the situation is often more effective than changing your mood.",
+    "So what does this mean in practice?",
+    "The practical lesson is simple: instead of waiting to feel motivated, break the task into the smallest possible first step and begin.",
+    "Do not wait for confidence. In this area, action comes first and motivation follows, not the other way round.",
+    "And when you do fail, which you will, treat it as information rather than as evidence about your character."
+   ],
+   "questions": [
+    {
+     "q": "What is the lecture mainly about?",
+     "options": {
+      "A": "How to manage time more effectively",
+      "B": "The real cause of procrastination",
+      "C": "Why students fail examinations",
+      "D": "Methods of punishing procrastinators"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What did the study mentioned by the speaker find?",
+     "options": {
+      "A": "Guilt helps students work harder",
+      "B": "Self-forgiveness reduced later procrastination",
+      "C": "Scheduling applications solved the problem",
+      "D": "Intelligent students procrastinate the most"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What practical advice does the speaker give?",
+     "options": {
+      "A": "Wait until you feel motivated",
+      "B": "Break the task into a very small first step",
+      "C": "Punish yourself for any delay",
+      "D": "Make a detailed weekly schedule"
+     },
+     "answer": "B"
+    }
+   ]
+  },
+  {
+   "id": "c6l02",
+   "exam": "cet6",
+   "label": "CET-6 讲座听力 · 认知科学",
+   "title": "Sleep and Memory",
+   "sentences": [
+    "Good afternoon. Today we will look at the relationship between sleep and memory.",
+    "It has been known for decades that people who sleep after learning remember more than those who stay awake.",
+    "What is newer is the discovery that different sleep stages appear to protect different kinds of memory.",
+    "Let me begin by describing what happens after we fall asleep.",
+    "Sleep is not a single state. Over the course of a night we move through several cycles, each lasting roughly ninety minutes.",
+    "Early in the night, deep slow-wave sleep dominates; later, rapid eye movement sleep becomes longer and more frequent.",
+    "Deep slow-wave sleep seems to be especially important for factual knowledge, such as vocabulary or historical dates.",
+    "In one experiment, participants who learned a list of words and then slept recalled about forty per cent more the following morning than a group who stayed awake for the same period.",
+    "Rapid eye movement sleep, on the other hand, appears to support skills and emotional memory.",
+    "Studies of piano practice have found that performance improves overnight even without further practice, provided the learner has had enough of this stage.",
+    "This is why sleeping less in order to study more is usually a bad trade.",
+    "The material you revise while losing sleep is precisely the material that sleep would have helped you keep.",
+    "A third finding concerns timing rather than duration.",
+    "Students who studied in the evening and slept afterwards performed better than those who studied in the morning and were tested the same evening.",
+    "The implication is that the interval between learning and sleeping should be kept short, ideally no more than a few hours.",
+    "There is one important qualification I should mention.",
+    "Most of these studies measure retention after a single night, so they tell us relatively little about how much is remembered months later.",
+    "Sleep appears to protect memory, but it does not replace the need to review material over time.",
+    "The practical implication is clear: if you are preparing for an examination, cutting sleep to gain study time is likely to cost you more than it gains.",
+    "A short review in the evening, followed by a full night of sleep, will almost always serve you better than an extra three hours of anxious revision."
+   ],
+   "questions": [
+    {
+     "q": "What is the main topic of the lecture?",
+     "options": {
+      "A": "How to fall asleep faster",
+      "B": "The link between sleep and memory",
+      "C": "The stages of human development",
+      "D": "Ways to prepare for examinations"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "According to the lecture, what does deep slow-wave sleep support?",
+     "options": {
+      "A": "Emotional memory",
+      "B": "Physical skills",
+      "C": "Factual knowledge",
+      "D": "Language fluency"
+     },
+     "answer": "C"
+    },
+    {
+     "q": "What does the speaker suggest students should not do?",
+     "options": {
+      "A": "Study vocabulary before sleeping",
+      "B": "Sleep after learning",
+      "C": "Cut sleep to gain study time",
+      "D": "Review historical dates"
+     },
+     "answer": "C"
+    },
+    {
+     "q": "According to the lecture, how soon after learning should a person sleep?",
+     "options": {
+      "A": "As soon as possible, ideally within a few hours",
+      "B": "After exactly twenty-four hours",
+      "C": "Only after several nights have passed",
+      "D": "It makes no difference at all"
+     },
+     "answer": "A"
+    }
+   ]
+  },
+  {
+   "id": "c6c01",
+   "exam": "cet6",
+   "label": "CET-6 长对话 · 学术讨论",
+   "title": "Discussing a Research Proposal",
+   "sentences": [
+    "Professor Hayes, do you have a moment? I would like to discuss my research proposal with you.",
+    "Of course, Anna. I read the first draft over the weekend. The topic is interesting, but the method needs more thought.",
+    "I was hoping to interview about thirty undergraduate students. Would that be enough?",
+    "For a study of this size it is a reasonable start, but the sample may be too narrow to support a general claim.",
+    "So I should include students from other universities as well?",
+    "That would help. More importantly, you need to explain how you will select them, otherwise the results could be biased.",
+    "I see. Should I also reduce the number of research questions? I have five at the moment.",
+    "Five is ambitious for a one-semester project. I would suggest focusing on two and doing them well.",
+    "That makes sense. When would you need the revised proposal?",
+    "Send it to me by the end of next week. After that we can talk about applying for funding.",
+    "Should I include a separate section on previous studies?",
+    "Yes, but keep it short. Two pages is enough to show you know the field, and it will make your own contribution clearer.",
+    "I have found about forty papers, but I am not sure which ones matter most.",
+    "Start with the five or six that are cited most often. If two papers reach opposite conclusions, mention both and explain why.",
+    "That is helpful. How much time should I allow for the interviews themselves?",
+    "Give yourself at least three weeks. People cancel, and transcribing what they say always takes longer than students expect.",
+    "I had not thought about transcription. Should I record them?",
+    "You may record them, but you must ask each person for written permission first. That is a requirement, not a choice.",
+    "Understood. I will prepare a consent form.",
+    "Good. Bring the form and your revised questions to our next meeting, and we will go through them together."
+   ],
+   "questions": [
+    {
+     "q": "Why does the woman talk to the professor?",
+     "options": {
+      "A": "To hand in her final paper",
+      "B": "To discuss her research proposal",
+      "C": "To apply for a scholarship",
+      "D": "To ask for an extension"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What does the man say about the woman sample?",
+     "options": {
+      "A": "It is too large to manage",
+      "B": "It may be too narrow for a general claim",
+      "C": "It should include only undergraduates",
+      "D": "It has been carefully selected"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What does the man suggest about the research questions?",
+     "options": {
+      "A": "Add more of them",
+      "B": "Focus on two of them",
+      "C": "Keep all five",
+      "D": "Remove them entirely"
+     },
+     "answer": "B"
+    },
+    {
+     "q": "What should the woman do by the end of next week?",
+     "options": {
+      "A": "Submit the revised proposal",
+      "B": "Apply for research funding",
+      "C": "Begin her interviews",
+      "D": "Choose a new research topic"
+     },
+     "answer": "A"
+    }
+   ]
+  }
+ ]
+}

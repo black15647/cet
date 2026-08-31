@@ -21,7 +21,7 @@ const vm = require('vm');
 const root = path.join(__dirname, '..');
 const ctx = { console };
 vm.createContext(ctx);
-['js/data.js', 'js/realexam.js', 'js/bank2.js', 'js/bank3.js'].forEach(f => {
+['js/data.js', 'js/realexam.js', 'js/bank2.js', 'js/bank3.js', 'js/bank4.js'].forEach(f => {
   vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), ctx, { filename: f });
 });
 

@@ -103,7 +103,7 @@ function hash(str) { let h = 0; for (let i = 0; i < str.length; i++) { h = (h * 
 
 function rec(key, delta) {
   const d = today();
-  if (!S.history[d]) S.history[d] = { readDone: 0, readCorrect: 0, readTotal: 0, transDone: 0, writDone: 0, listenDone: 0, wordsDone: 0 };
+  if (!S.history[d]) S.history[d] = { readDone: 0, readCorrect: 0, readTotal: 0, transDone: 0, writDone: 0, listenDone: 0, listenQuiz: 0, listenQuizTotal: 0, wordsDone: 0 };
   S.history[d][key] = (S.history[d][key] || 0) + delta;
   save(); renderNavBadges();
 }
@@ -614,50 +614,162 @@ function gradeEssay(id) {
   rec('writDone', 1); save();
 }
 
-/* ---------- 听力 ---------- */
-let listenState = { rate: 1.0 };
+/* ---------- 听力（考试级配音） ---------- */
+let listenState = { rate: 1.0, gap: 5000 };
+let AMAN = null;         // audio/manifest.json：null=未加载，false=不可用
+let audioEl = null;
+let playSeq = 0;         // 连读序号，自增用于中断上一次连读
+
+/* 取某篇听力的配音配置；缺失时按标题关键字推断题型 */
+function listenMetaOf(id) {
+  const M = window.LISTEN_META;
+  const it = DB.listenings.find(x => x.id === id) || {};
+  const conf = (M && M.ITEMS && M.ITEMS[id]) || null;
+  let type = 'passage';
+  if (conf) {
+    type = conf.type;
+  } else {
+    const t = (it.label || '') + (it.title || '');
+    if (/对话|conversation/i.test(t)) type = 'conversation';
+    else if (/讲座|lecture/i.test(t)) type = 'lecture';
+    else if (/新闻|news/i.test(t)) type = 'news';
+  }
+  const cfg = (M && M.TYPES && M.TYPES[type]) ||
+    { label: '短文听力', wpm: 130, gap: 650, voice: 'F_TALK', mode: 'single' };
+  return { type, conf, cfg };
+}
+
+/* 异步加载音频索引；取不到时置为 false，界面自动回退浏览器语音合成 */
+async function loadAudioManifest() {
+  if (AMAN !== null) return AMAN;
+  try {
+    const r = await fetch('audio/manifest.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    AMAN = await r.json();
+  } catch (e) {
+    AMAN = false;
+  }
+  return AMAN;
+}
+
+/* 复用同一个 audio 元素，避免多次点击产生重叠播放 */
+function getAudioEl() {
+  if (!audioEl) {
+    audioEl = new Audio();
+    audioEl.preload = 'auto';
+  }
+  return audioEl;
+}
+
+/* 播放音频文件；若音频缺失或解码失败，自动回退到浏览器语音合成 */
+function playAudioFile(rel, fallbackText, onEnd) {
+  const el = getAudioEl();
+  let done = false;
+  const finish = () => { if (!done) { done = true; if (onEnd) onEnd(); } };
+  el.onended = finish;
+  el.onerror = () => { speak(fallbackText, listenState.rate, onEnd); };
+  el.src = rel;
+  el.playbackRate = listenState.rate;
+  const p = el.play();
+  if (p && p.catch) p.catch(() => { if (!done) speak(fallbackText, listenState.rate, onEnd); });
+}
+
+/* 停止一切播放（音频 + 语音合成 + 连读队列） */
+function listenStopAll() {
+  playSeq++;
+  const el = getAudioEl();
+  el.pause();
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  document.querySelectorAll('.sent-row').forEach(r => r.classList.remove('playing'));
+}
 
 VIEWS.listening = function (id) {
   if (id) return listeningDetail(id);
   const list = DB.listenings;
   app.innerHTML = `
     <div class="page-head"><h1>🎧 听力精听</h1></div>
-    <p class="muted">语料由浏览器语音合成（TTS）朗读，支持 0.5–1.5 变速。模式：逐句精听 → 听写填空 → 全文对照。建议使用 Chrome / Edge 浏览器。</p>
+    <p class="muted">考试级 AI 配音（微软 Neural 声线），按题型自动匹配声线、语速与停顿——新闻 145wpm、短文 130wpm、对话 135wpm、讲座 150wpm，并附带官方 Directions 指令。流程：播放指令 → 全文连读 → 逐句精听 → 听写填空 → 全文对照。</p>
     <div class="list">
-      ${list.map(l => `
+      ${list.map(l => {
+        const m = listenMetaOf(l.id);
+        return `
         <div class="list-item">
           <div>${realBadge(l)}<b> ${esc(l.title)}</b>
-            <div class="muted">${l.sentences.length} 句 · 含 ${l.blanks.length} 个听写填空</div></div>
+            <div class="muted"><span class="tag">${esc(m.cfg.label)}</span> ${m.cfg.wpm}wpm · ${l.sentences.length} 句${l.questions && l.questions.length ? ' · ' + l.questions.length + ' 道选择题' : ''} · 含 ${l.blanks.length} 个听写填空</div></div>
           <button class="btn" onclick="go('listening','${l.id}')">进入</button>
-        </div>`).join('')}
+        </div>`;
+      }).join('')}
     </div>`;
 };
 
 function listeningDetail(id) {
   const l = DB.listenings.find(x => x.id === id);
   if (!l) return go('listening');
+  const m = listenMetaOf(id);
+  const spkSeq = (m.conf && m.conf.speakers) || 'F';
   app.innerHTML = `
     <a class="back" href="#listening">← 返回听力列表</a>
     <div class="page-head"><h1>${esc(l.title)}</h1></div>
     <div class="card">
       ${l.real ? `<p>${realBadge(l)}</p>${sourceLinks(l)}
-      <p class="muted">语料为真题原文，由浏览器语音合成朗读（非考场原音）；中文译文为辅助理解所加。</p>` : ''}
+      <p class="muted">语料为真题原文，配音为 AI 合成（非考场原音）；中文译文为辅助理解所加。</p>` : ''}
+      <p><span class="tag">${esc(m.cfg.label)}</span>
+        <span class="muted">${esc(voiceDescOf(m.cfg.voice))} · 目标语速 ${m.cfg.wpm}wpm${m.cfg.mode === 'dialog' ? ' · 男女声交替' : ''}</span></p>
+      <div class="listen-ctrl">
+        <button class="btn" onclick="playDirections('${l.id}')">📢 播放考试指令</button>
+        <button class="btn primary" onclick="playAll('${l.id}',0)">▶ 全文连读</button>
+        ${l.questions && l.questions.length ? `<button class="btn" onclick="playExam('${l.id}')">🎯 考试模式</button>` : ''}
+        <button class="btn ghost" onclick="listenStopAll()">■ 停止</button>
+      </div>
+      <div id="play-status" class="muted"></div>
       <div class="rate-line">🔊 语速
-        <input type="range" min="0.5" max="1.5" step="0.1" value="${listenState.rate}" id="rate" oninput="listenState.rate=+this.value;document.getElementById('rate-val').textContent=this.value+'x'">
-        <b id="rate-val">${listenState.rate}x</b>
+        <input type="range" min="0.5" max="1.5" step="0.1" value="${listenState.rate}" id="rate" oninput="setPlayRate(this.value);document.getElementById('rate-val').textContent=(+this.value).toFixed(1)+'x'">
+        <b id="rate-val">${listenState.rate.toFixed(1)}x</b>
+      </div>
+      <div class="rate-line">⏸ 句间停顿
+        <select id="gap" onchange="listenState.gap=+this.value">
+          <option value="0">不停顿</option>
+          <option value="3000">3 秒（快速）</option>
+          <option value="5000" selected>5 秒（推荐）</option>
+          <option value="15000">15 秒（真实考试）</option>
+        </select>
       </div>
       <div id="sent-list">
-        ${l.sentences.map((s, i) => `
+        ${l.sentences.map((s, i) => {
+          const spk = spkOf(spkSeq, i);
+          return `
           <div class="sent-row" id="s-${i}">
             <button class="btn small play" onclick="playSent('${l.id}',${i})">▶ 播放</button>
+            <span class="spk ${spk === 'F' ? 'f' : 'm'}" title="${spk === 'F' ? '女声' : '男声'}">${spk === 'F' ? '👩' : '👨'}</span>
             <button class="btn small ghost" onclick="revealSent(${i})">显示原文/译文</button>
             <button class="btn small ghost" onclick="listenDone('${l.id}',${i})">✓ 本句精听完成</button>
             <div class="sent-text" id="st-${i}" style="display:none">
               <p>${esc(s.en)}</p><p class="muted">${esc(s.zh)}</p>
             </div>
-          </div>`).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
+    ${l.questions && l.questions.length ? `
+    <div class="card">
+      <h2>📝 听力理解（${l.questions.length} 题）</h2>
+      <p class="muted">与正式考试同题型。建议先点「📢 播放考试指令」再点「▶ 全文连读」，模拟考场只放一遍；提交后查看正确依据与每个干扰项错在哪。</p>
+      ${l.questions.map((q, qi) => `
+        <div class="lq-block" id="lq-block-${qi}">
+          <p><b>${qi + 1}. ${esc(q.q)}</b>
+            <button class="btn small ghost" onclick="playQuestion('${l.id}',${qi})">▶ 听题目与选项</button></p>
+          <div class="opts">
+            ${['A', 'B', 'C', 'D'].map(k => `
+              <label class="opt" data-lq="${qi}" data-k="${k}">
+                <input type="radio" name="lq${qi}" value="${k}" onchange="pickListenOpt(${qi},'${k}')">
+                <b>${k}.</b> ${esc(q.options[k])}
+              </label>`).join('')}
+          </div>
+          <div class="lq-result" id="lqr-${qi}"></div>
+        </div>`).join('')}
+      <button class="btn" onclick="checkListenQuestions('${l.id}')">提交答案</button>
+      <div id="lq-total"></div>
+    </div>` : ''}
     <div class="card">
       <h2>✏️ 听写填空</h2>
       <p class="muted">先播放对应句子，再填入你听到的单词。</p>
@@ -687,11 +799,209 @@ function speak(text, rate, onend) {
   if (onend) u.onend = onend;
   speechSynthesis.speak(u);
 }
+/* 取第 i 句的说话人，用于男女声切换 */
+function spkOf(seq, i) {
+  if (!seq) return 'F';
+  if (seq.length === 1) return seq[0];
+  return seq[i % seq.length];
+}
+
+function voiceDescOf(vkey) {
+  const M = window.LISTEN_META;
+  const v = (M && M.VOICES && M.VOICES[vkey]) || {};
+  return v.desc || 'AI 配音';
+}
+
+/* 变速：直接改 audio 的 playbackRate，浏览器会保持音高自然 */
+function setPlayRate(v) {
+  listenState.rate = +v;
+  getAudioEl().playbackRate = listenState.rate;
+}
+
+function setPlayStatus(t) {
+  const el = document.getElementById('play-status');
+  if (el) el.textContent = t || '';
+}
+
+/* 播放单句：优先用预生成的考试级音频，缺失时回退浏览器语音合成 */
+let sentToken = 0;
 function playSent(id, i) {
   const l = DB.listenings.find(x => x.id === id);
-  document.querySelectorAll('.sent-row').forEach(r => r.classList.remove('playing'));
-  document.getElementById('s-' + i).classList.add('playing');
-  speak(l.sentences[i].en, listenState.rate);
+  if (!l) return;
+  const tk = ++sentToken;
+  listenStopAll();
+  const row = document.getElementById('s-' + i);
+  if (row) row.classList.add('playing');
+  loadAudioManifest().then(man => {
+    if (tk !== sentToken) return;
+    const e = man && man.items ? man.items[id] : null;
+    const rec = e && e.sentences && e.sentences[i];
+    if (rec && rec.f) playAudioFile(rec.f, l.sentences[i].en);
+    else speak(l.sentences[i].en, listenState.rate);
+  });
+}
+
+/* 播放本篇的官方考试指令（Directions） */
+async function playDirections(id) {
+  const man = await loadAudioManifest();
+  const e = man && man.items ? man.items[id] : null;
+  listenStopAll();
+  if (e && e.dir) {
+    setPlayStatus('正在播放考试指令 …');
+    playAudioFile(e.dir, e.dirText || '', () => setPlayStatus('指令播放完毕，可开始做题'));
+    return;
+  }
+  const conf = listenMetaOf(id).conf || {};
+  const dtext = (window.LISTEN_META.DIRECTIONS || {})[conf.dir] || '';
+  if (!dtext) { setPlayStatus('本篇未配置考试指令'); return; }
+  setPlayStatus('正在播放考试指令（浏览器合成）…');
+  speak(dtext, Math.max(0.8, listenState.rate - 0.15),
+    () => setPlayStatus('指令播放完毕，可开始做题'));
+}
+
+/* 全文连读：按考场节奏逐句播放，句间按所选停顿等待 */
+async function playAll(id, startIdx) {
+  const l = DB.listenings.find(x => x.id === id);
+  if (!l) return;
+  const man = await loadAudioManifest();
+  const e = man && man.items ? man.items[id] : null;
+  listenStopAll();
+  const my = ++playSeq;
+  let i = startIdx || 0;
+  const step = () => {
+    if (my !== playSeq) return;
+    if (i >= l.sentences.length) {
+      setPlayStatus('✅ 本篇播放完毕');
+      document.querySelectorAll('.sent-row').forEach(r => r.classList.remove('playing'));
+      rec('listenDone', 1);
+      save();
+      return;
+    }
+    const idx = i++;
+    document.querySelectorAll('.sent-row').forEach(r => r.classList.remove('playing'));
+    const row = document.getElementById('s-' + idx);
+    if (row) row.classList.add('playing');
+    setPlayStatus('播放中：第 ' + (idx + 1) + ' / ' + l.sentences.length + ' 句');
+    const next = () => {
+      if (my !== playSeq) return;
+      const gap = listenState.gap;
+      if (gap > 0) setTimeout(step, gap / listenState.rate);
+      else step();
+    };
+    const rec2 = e && e.sentences && e.sentences[idx];
+    if (rec2 && rec2.f) playAudioFile(rec2.f, l.sentences[idx].en, next);
+    else speak(l.sentences[idx].en, listenState.rate, next);
+  };
+  step();
+}
+
+/* 单题播放：题目与选项一起念出（还原真实考场"听题作答"） */
+async function playQuestion(id, qi) {
+  const man = await loadAudioManifest();
+  const e = man && man.items ? man.items[id] : null;
+  listenStopAll();
+  const qs = e && e.questions;
+  const l = DB.listenings.find(x => x.id === id);
+  const q = l && l.questions && l.questions[qi];
+  if (!q) return;
+  const rec = qs && qs[qi];
+  if (rec && rec.q) {
+    setPlayStatus('正在播放第 ' + (qi + 1) + ' 题（题目与选项）…');
+    playAudioFile(rec.q, rec.qText || '', () => setPlayStatus(''));
+  } else {
+    const fb = 'Question ' + (qi + 1) + '. ' + q.q + ' ' +
+      ['A', 'B', 'C', 'D'].map(k => k + ', ' + q.options[k] + '.').join(' ');
+    setPlayStatus('正在播放第 ' + (qi + 1) + ' 题（浏览器合成）…');
+    speak(fb, listenState.rate, () => setPlayStatus(''));
+  }
+}
+
+/* 考试模式：指令 → 篇目标识 → 正文连读 → 题组引导 → 逐题听题作答（只放一遍） */
+let examToken = 0;
+async function playExam(id) {
+  const l = DB.listenings.find(x => x.id === id);
+  if (!l || !l.questions || !l.questions.length) return;
+  const man = await loadAudioManifest();
+  const e = man && man.items ? man.items[id] : null;
+  listenStopAll();
+  const my = ++examToken;
+  const qa = (e && e.questions) || [];
+  const think = 8000; // 每题听完后给的思考时间（毫秒）
+
+  const playThen = (rel, fb, cb) => {
+    if (my !== examToken) return;
+    if (rel) playAudioFile(rel, fb, () => { if (my === examToken) cb(); });
+    else speak(fb, listenState.rate, () => { if (my === examToken) cb(); });
+  };
+
+  const finishExam = () => {
+    if (my !== examToken) return;
+    setPlayStatus('✅ 考试音频播放完毕，请提交答案');
+    rec('listenDone', 1); save();
+  };
+
+  const runQuestion = (qi) => {
+    if (my !== examToken) return;
+    const block = document.getElementById('lq-block-' + qi);
+    if (block) { block.classList.add('exam-active'); block.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    setPlayStatus('第 ' + (qi + 1) + ' 题：听题并作答');
+    const rec = qa[qi];
+    const rel = rec && rec.q;
+    const fb = rec ? rec.qText : ('Question ' + (qi + 1) + '. ' + l.questions[qi].q);
+    playThen(rel, fb, () => {
+      if (my !== examToken) return;
+      setPlayStatus('第 ' + (qi + 1) + ' 题：请作答（' + Math.round(think / 1000) + ' 秒后进入下一题）');
+      setTimeout(() => {
+        if (my !== examToken) return;
+        if (block) block.classList.remove('exam-active');
+        if (qi + 1 < qa.length) runQuestion(qi + 1);
+        else finishExam();
+      }, think);
+    });
+  };
+
+  const startBody = () => {
+    if (my !== examToken) return;
+    let i = 0;
+    const step = () => {
+      if (my !== examToken) return;
+      if (i >= l.sentences.length) {
+        if (e && e.qintro) playThen(e.qintro, '', () => runQuestion(0));
+        else runQuestion(0);
+        return;
+      }
+      const idx = i++;
+      const row = document.getElementById('s-' + idx);
+      if (row) row.classList.add('playing');
+      const rec2 = e && e.sentences && e.sentences[idx];
+      const goNext = () => {
+        if (my !== examToken) return;
+        if (row) row.classList.remove('playing');
+        if (listenState.gap > 0) setTimeout(step, listenState.gap / listenState.rate);
+        else step();
+      };
+      if (rec2 && rec2.f) playAudioFile(rec2.f, l.sentences[idx].en, goNext);
+      else speak(l.sentences[idx].en, listenState.rate, goNext);
+    };
+    step();
+  };
+
+  setPlayStatus('🎯 考试模式：只放一遍，请于音频播放时作答');
+  if (e && e.dir) {
+    playThen(e.dir, e.dirText || '', () => {
+      if (my !== examToken) return;
+      if (e.intro) playThen(e.intro, '', () => startBody());
+      else startBody();
+    });
+  } else {
+    const conf = listenMetaOf(id).conf || {};
+    const dtext = (window.LISTEN_META.DIRECTIONS || {})[conf.dir] || '';
+    playThen(null, dtext, () => {
+      if (my !== examToken) return;
+      if (e && e.intro) playThen(e.intro, '', () => startBody());
+      else startBody();
+    });
+  }
 }
 function revealSent(i) { document.getElementById('st-' + i).style.display = 'block'; }
 function listenDone(id, i) { document.getElementById('s-' + i).classList.add('listened'); rec('listenDone', 1); }
@@ -705,6 +1015,49 @@ function checkBlanks(id) {
   document.getElementById('blank-result').innerHTML = `
     <p class="${right === l.blanks.length ? 'ok-msg' : 'err-msg'}">结果：${right} / ${l.blanks.length} 正确</p>
     ${wrong.map(w => `<p>第 ${w.i + 1} 空：你填 <b>${esc(w.v || '（空）')}</b>，正确答案 <b>${esc(w.b.answer)}</b>（${esc(w.b.hint)}）</p>`).join('')}`;
+  save();
+}
+
+/* 听力选择题：高亮当前所选 */
+function pickListenOpt(qi, k) {
+  document.querySelectorAll('.opt[data-lq="' + qi + '"]').forEach(function (el) {
+    el.classList.remove('picked');
+  });
+  const el = document.querySelector('.opt[data-lq="' + qi + '"][data-k="' + k + '"]');
+  if (el) el.classList.add('picked');
+}
+
+/* 听力选择题判分：给出正确依据，并逐项说明干扰项错在哪 */
+function checkListenQuestions(id) {
+  const l = DB.listenings.find(x => x.id === id);
+  if (!l || !l.questions || !l.questions.length) return;
+  let right = 0;
+  l.questions.forEach(function (q, qi) {
+    const picked = document.querySelector('input[name="lq' + qi + '"]:checked');
+    const v = picked ? picked.value : null;
+    const ok = v === q.answer;
+    if (ok) right++;
+    const box = document.getElementById('lqr-' + qi);
+    if (!box) return;
+    const head = ok ? '✅ 回答正确'
+      : '❌ 你选 ' + esc(v || '未作答') + '，正确答案 <b>' + q.answer + '</b>';
+    const ana = Object.keys(q.analysis).map(function (k) {
+      return '<p class="muted"><b>' + k + '</b> 错在哪：' + esc(q.analysis[k]) + '</p>';
+    }).join('');
+    box.innerHTML = '<p class="' + (ok ? 'ok-msg' : 'err-msg') + '">' + head + '</p>' +
+      '<p class="muted"><b>正确依据：</b>' + esc(q.basis) + '</p>' + ana;
+    document.querySelectorAll('.opt[data-lq="' + qi + '"]').forEach(function (el) {
+      el.classList.remove('picked');
+      if (el.dataset.k === q.answer) el.classList.add('right');
+      else if (el.dataset.k === v) el.classList.add('wrong');
+    });
+  });
+  const total = l.questions.length;
+  document.getElementById('lq-total').innerHTML =
+    '<p class="' + (right === total ? 'ok-msg' : 'err-msg') + '">结果：' +
+    right + ' / ' + total + ' 正确</p>';
+  rec('listenQuiz', right);
+  rec('listenQuizTotal', total);
   save();
 }
 
