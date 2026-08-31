@@ -1,0 +1,1534 @@
+{
+ "version": 1,
+ "base": "audio/",
+ "items": {
+  "l1": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/l1/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/l1/s000.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Good morning, everyone. I would like to introduce the new study corner on the third floor of the library.",
+     "dur": 8.83
+    },
+    {
+     "f": "audio/l1/s001.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "This area is designed for group discussions, so you may talk freely there without disturbing others.",
+     "dur": 7.82
+    },
+    {
+     "f": "audio/l1/s002.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "The quiet reading rooms remain on the second floor, where silence must be kept at all times.",
+     "dur": 7.54
+    },
+    {
+     "f": "audio/l1/s003.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "To book the study corner, simply scan the code on the door and choose an available time slot.",
+     "dur": 7.22
+    },
+    {
+     "f": "audio/l1/s004.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Each group may use the space for up to two hours per day.",
+     "dur": 4.99
+    },
+    {
+     "f": "audio/l1/s005.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "If you have any questions, please ask the staff at the front desk.",
+     "dur": 5.57
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "l2": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/l2/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/l2/s000.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Octopuses are widely regarded as the most intelligent of all invertebrates.",
+     "dur": 6.24
+    },
+    {
+     "f": "audio/l2/s001.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Unlike humans, two thirds of an octopus's neurons are located in its arms, not in its brain.",
+     "dur": 7.99
+    },
+    {
+     "f": "audio/l2/s002.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "This means each arm can solve problems and react to the environment independently.",
+     "dur": 6.55
+    },
+    {
+     "f": "audio/l2/s003.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "In laboratories, octopuses have learned to open jars, navigate mazes and even recognize individual keepers.",
+     "dur": 9.62
+    },
+    {
+     "f": "audio/l2/s004.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Some researchers believe their intelligence evolved because catching prey in complex environments requires flexible thinking.",
+     "dur": 9.26
+    },
+    {
+     "f": "audio/l2/s005.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Understanding octopuses may even shed light on how intelligence can arise in a form of life very different from our own.",
+     "dur": 8.93
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "l3": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/l3/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/l3/s000.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "More and more companies are replacing sit-down meetings with walking meetings.",
+     "dur": 6.26
+    },
+    {
+     "f": "audio/l3/s001.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "The idea is simple: instead of sitting around a table, two or three colleagues discuss work while walking outdoors.",
+     "dur": 10.25
+    },
+    {
+     "f": "audio/l3/s002.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Research suggests that walking can increase creative thinking by up to sixty per cent.",
+     "dur": 7.22
+    },
+    {
+     "f": "audio/l3/s003.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Walking meetings are especially useful for one-to-one discussions and brainstorming.",
+     "dur": 6.94
+    },
+    {
+     "f": "audio/l3/s004.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "However, they are not suitable for meetings that involve detailed documents or sensitive topics.",
+     "dur": 7.99
+    },
+    {
+     "f": "audio/l3/s005.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Experts advise keeping the group small and the route familiar.",
+     "dur": 5.42
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "l4": {
+   "type": "lecture",
+   "typeLabel": "讲座听力",
+   "wpm": 150,
+   "gap": 750,
+   "dir": "audio/l4/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/l4/s000.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "Good afternoon. Today I will discuss how cities around the world are adapting to more frequent heatwaves.",
+     "dur": 7.94
+    },
+    {
+     "f": "audio/l4/s001.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "One major problem is the urban heat island effect, which makes city centres several degrees hotter than surrounding areas.",
+     "dur": 8.11
+    },
+    {
+     "f": "audio/l4/s002.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "Cities are responding by planting trees, painting roofs white and creating green corridors along streets.",
+     "dur": 7.49
+    },
+    {
+     "f": "audio/l4/s003.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "Early warning systems have also been introduced to protect elderly residents during extreme heat.",
+     "dur": 6.36
+    },
+    {
+     "f": "audio/l4/s004.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "These measures are relatively inexpensive compared with rebuilding infrastructure.",
+     "dur": 5.69
+    },
+    {
+     "f": "audio/l4/s005.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "In conclusion, adaptation is no longer optional but a necessity for urban planning.",
+     "dur": 6.29
+    }
+   ],
+   "dirText": "In this section, you will hear three recordings of lectures or talks followed by three or four questions. The recordings will be played only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "l5": {
+   "type": "conversation",
+   "typeLabel": "长对话",
+   "wpm": 135,
+   "gap": 450,
+   "dir": "audio/l5/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/l5/s000.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "I have been struggling to choose a topic for my graduation thesis.",
+     "dur": 5.38
+    },
+    {
+     "f": "audio/l5/s001.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Have you considered starting from the courses you found most interesting last semester?",
+     "dur": 6.14
+    },
+    {
+     "f": "audio/l5/s002.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "I enjoyed the course on consumer behaviour, but I am not sure it is practical enough.",
+     "dur": 6.48
+    },
+    {
+     "f": "audio/l5/s003.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Practicality matters, but a topic you genuinely care about will keep you motivated for months.",
+     "dur": 7.63
+    },
+    {
+     "f": "audio/l5/s004.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "That makes sense. I could narrow it down to online reviews and purchasing decisions.",
+     "dur": 7.68
+    },
+    {
+     "f": "audio/l5/s005.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "That is a workable focus. Check whether enough data is available before you commit to it.",
+     "dur": 7.18
+    }
+   ],
+   "dirText": "Directions: In this section, you will hear a conversation on an academic topic. The conversation will be spoken only once. After you hear each question, you must choose the best answer from the four choices marked A, B, C and D."
+  },
+  "c4l01": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/c4l01/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4l01/s000.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "A healthy breakfast gives you energy for the whole morning.",
+     "dur": 4.61
+    },
+    {
+     "f": "audio/c4l01/s001.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Many students skip breakfast because they get up too late.",
+     "dur": 4.9
+    },
+    {
+     "f": "audio/c4l01/s002.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "A simple meal of eggs, milk and bread is enough to keep you active.",
+     "dur": 5.69
+    },
+    {
+     "f": "audio/c4l01/s003.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Try to leave home ten minutes earlier so you have time to eat.",
+     "dur": 5.04
+    },
+    {
+     "f": "audio/c4l01/s004.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Your brain works better after a good meal.",
+     "dur": 3.89
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "c4l02": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/c4l02/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4l02/s000.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Learning new words is easier when you meet them in reading.",
+     "dur": 4.85
+    },
+    {
+     "f": "audio/c4l02/s001.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Write the word and its example sentence in a small notebook.",
+     "dur": 5.26
+    },
+    {
+     "f": "audio/c4l02/s002.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Review the list for five minutes before you go to sleep.",
+     "dur": 4.54
+    },
+    {
+     "f": "audio/c4l02/s003.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Group similar words together to remember them faster.",
+     "dur": 4.61
+    },
+    {
+     "f": "audio/c4l02/s004.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "In this way, new words become part of your long-term memory.",
+     "dur": 5.57
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "c4l03": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/c4l03/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4l03/s000.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "We took a bus to the lake early on Saturday morning.",
+     "dur": 4.54
+    },
+    {
+     "f": "audio/c4l03/s001.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "The water was so clear that we could see fish swimming.",
+     "dur": 4.54
+    },
+    {
+     "f": "audio/c4l03/s002.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Some of us rented bikes and rode along the shore.",
+     "dur": 4.32
+    },
+    {
+     "f": "audio/c4l03/s003.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "In the afternoon we had a picnic under a big tree.",
+     "dur": 4.46
+    },
+    {
+     "f": "audio/c4l03/s004.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Everyone agreed it was the best trip this month.",
+     "dur": 4.13
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "c4l04": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/c4l04/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4l04/s000.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Turn off the lights when you leave a room.",
+     "dur": 3.1
+    },
+    {
+     "f": "audio/c4l04/s001.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Unplug devices that you do not use every day.",
+     "dur": 3.98
+    },
+    {
+     "f": "audio/c4l04/s002.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Open the window instead of using the air conditioner.",
+     "dur": 4.34
+    },
+    {
+     "f": "audio/c4l04/s003.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Small habits like these help lower your bill.",
+     "dur": 3.43
+    },
+    {
+     "f": "audio/c4l04/s004.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "The earth will thank you for saving power.",
+     "dur": 3.24
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "c4l05": {
+   "type": "passage",
+   "typeLabel": "短文听力",
+   "wpm": 130,
+   "gap": 650,
+   "dir": "audio/c4l05/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4l05/s000.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Last winter I fell ill and missed two weeks of school.",
+     "dur": 4.78
+    },
+    {
+     "f": "audio/c4l05/s001.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "My friend Lisa brought me her notes every evening.",
+     "dur": 4.2
+    },
+    {
+     "f": "audio/c4l05/s002.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "She also explained the difficult points I could not follow.",
+     "dur": 4.85
+    },
+    {
+     "f": "audio/c4l05/s003.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Thanks to her help, I caught up quickly after returning.",
+     "dur": 4.78
+    },
+    {
+     "f": "audio/c4l05/s004.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "A true friend is someone who stays with you in hard times.",
+     "dur": 4.8
+    }
+   ],
+   "dirText": "In this section, you will hear three passages. At the end of each passage, you will hear three or four questions. Both the passage and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre."
+  },
+  "c4n01": {
+   "type": "news",
+   "typeLabel": "新闻听力",
+   "wpm": 145,
+   "gap": 700,
+   "dir": "audio/c4n01/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4n01/s000.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "A new subway line opened in the city on Monday, three months ahead of schedule.",
+     "dur": 5.83
+    },
+    {
+     "f": "audio/c4n01/s001.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Line 6 runs eighteen kilometres from the northern suburbs to the central business district, with twelve stations along the way.",
+     "dur": 8.81
+    },
+    {
+     "f": "audio/c4n01/s002.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Officials say the line is expected to carry about two hundred thousand passengers a day and cut average travel time by nearly forty per cent.",
+     "dur": 9.67
+    },
+    {
+     "f": "audio/c4n01/s003.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The project began in 2021 and cost about three billion dollars, making it the largest transport investment in the history of the city.",
+     "dur": 9.96
+    },
+    {
+     "f": "audio/c4n01/s004.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "During the first week, rides will be free so that residents can try the new service.",
+     "dur": 6.0
+    },
+    {
+     "f": "audio/c4n01/s005.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The transport department added that a further extension to the airport is under construction and should open in two years.",
+     "dur": 8.06
+    },
+    {
+     "f": "audio/c4n01/s006.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Local business owners near the new stations welcome the change, though some residents have complained about the noise during construction.",
+     "dur": 8.52
+    }
+   ],
+   "dirText": "In this section, you will hear three news reports. At the end of each news report, you will hear two or three questions. Both the news report and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c4n01/intro.mp3",
+   "qintro": "audio/c4n01/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c4n01/q000.mp3",
+     "qText": "Question 1. What is the news report mainly about?"
+    },
+    {
+     "q": "audio/c4n01/q001.mp3",
+     "qText": "Question 2. How many passengers is Line 6 expected to carry each day?"
+    }
+   ]
+  },
+  "c4n02": {
+   "type": "news",
+   "typeLabel": "新闻听力",
+   "wpm": 145,
+   "gap": 700,
+   "dir": "audio/c4n02/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4n02/s000.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Scientists have recorded a sharp rise in the number of wild giant pandas, according to a report published on Thursday.",
+     "dur": 8.4
+    },
+    {
+     "f": "audio/c4n02/s001.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The population has grown from 1,110 in the nineteen eighties to more than 1,800 today.",
+     "dur": 8.04
+    },
+    {
+     "f": "audio/c4n02/s002.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The survey covered more than two thousand square kilometres of forest across three provinces and took nearly four years to complete.",
+     "dur": 8.62
+    },
+    {
+     "f": "audio/c4n02/s003.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Teams used camera traps and satellite images instead of counting the animals directly, which the report says gives a more reliable result.",
+     "dur": 9.5
+    },
+    {
+     "f": "audio/c4n02/s004.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Researchers say the increase is largely the result of better forest protection and stricter hunting laws.",
+     "dur": 7.42
+    },
+    {
+     "f": "audio/c4n02/s005.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "A giant panda national park has also been established, connecting several reserves that were previously separated by roads and farms.",
+     "dur": 9.41
+    },
+    {
+     "f": "audio/c4n02/s006.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "However, they warned that climate change could damage the bamboo that pandas depend on for food.",
+     "dur": 6.82
+    },
+    {
+     "f": "audio/c4n02/s007.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The researchers say the next step is to plant bamboo in the corridors between habitats so that isolated groups can meet and breed.",
+     "dur": 8.66
+    }
+   ],
+   "dirText": "In this section, you will hear three news reports. At the end of each news report, you will hear two or three questions. Both the news report and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c4n02/intro.mp3",
+   "qintro": "audio/c4n02/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c4n02/q000.mp3",
+     "qText": "Question 1. What does the report say about wild giant pandas?"
+    },
+    {
+     "q": "audio/c4n02/q001.mp3",
+     "qText": "Question 2. What threat do the researchers mention?"
+    }
+   ]
+  },
+  "c4n03": {
+   "type": "news",
+   "typeLabel": "新闻听力",
+   "wpm": 145,
+   "gap": 700,
+   "dir": "audio/c4n03/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4n03/s000.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "A technology company announced on Wednesday that it will power all of its data centres with renewable energy by 2030.",
+     "dur": 8.4
+    },
+    {
+     "f": "audio/c4n03/s001.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The company says it has already reached sixty per cent and plans to build two large solar farms in the southwest.",
+     "dur": 7.87
+    },
+    {
+     "f": "audio/c4n03/s002.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Experts say the move could push other technology firms to follow, since data centres use huge amounts of electricity.",
+     "dur": 8.42
+    },
+    {
+     "f": "audio/c4n03/s003.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The two solar farms are expected to produce about nine hundred megawatts, enough to supply roughly half of the electricity the company needs.",
+     "dur": 9.86
+    },
+    {
+     "f": "audio/c4n03/s004.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The remainder will come from wind power under long-term contracts signed with suppliers in the north of the country.",
+     "dur": 7.32
+    },
+    {
+     "f": "audio/c4n03/s005.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "The company added that the change will cost about four hundred million dollars but is expected to save money in the long run.",
+     "dur": 7.92
+    },
+    {
+     "f": "audio/c4n03/s006.mp3",
+     "spk": "F",
+     "voice": "F_NEWS",
+     "text": "Environmental groups welcomed the announcement but said the target should be brought forward, arguing that 2030 is too late given the pace of climate change.",
+     "dur": 10.25
+    }
+   ],
+   "dirText": "In this section, you will hear three news reports. At the end of each news report, you will hear two or three questions. Both the news report and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c4n03/intro.mp3",
+   "qintro": "audio/c4n03/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c4n03/q000.mp3",
+     "qText": "Question 1. What has the company announced?"
+    },
+    {
+     "q": "audio/c4n03/q001.mp3",
+     "qText": "Question 2. What do experts say about the move?"
+    },
+    {
+     "q": "audio/c4n03/q002.mp3",
+     "qText": "Question 3. What do environmental groups think about the plan?"
+    }
+   ]
+  },
+  "c4c01": {
+   "type": "conversation",
+   "typeLabel": "长对话",
+   "wpm": 135,
+   "gap": 450,
+   "dir": "audio/c4c01/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4c01/s000.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Excuse me, I would like to know the opening hours during the summer holidays.",
+     "dur": 5.71
+    },
+    {
+     "f": "audio/c4c01/s001.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "We are open from nine to five on weekdays, but we close at noon on Saturdays and we are closed on Sundays.",
+     "dur": 8.18
+    },
+    {
+     "f": "audio/c4c01/s002.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "That is shorter than I expected. Can I still borrow books on Saturday mornings?",
+     "dur": 5.95
+    },
+    {
+     "f": "audio/c4c01/s003.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Yes, borrowing is available whenever we are open. You just need your student card.",
+     "dur": 7.44
+    },
+    {
+     "f": "audio/c4c01/s004.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Good. How many books can I take out at one time?",
+     "dur": 3.91
+    },
+    {
+     "f": "audio/c4c01/s005.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Undergraduate students may borrow up to eight books for three weeks.",
+     "dur": 5.3
+    },
+    {
+     "f": "audio/c4c01/s006.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "What if I need them for longer?",
+     "dur": 2.26
+    },
+    {
+     "f": "audio/c4c01/s007.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "You can renew them twice online, but only if nobody else has reserved them.",
+     "dur": 5.95
+    },
+    {
+     "f": "audio/c4c01/s008.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "I see. And what happens if I return a book late?",
+     "dur": 4.1
+    },
+    {
+     "f": "audio/c4c01/s009.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "There is a fine of fifty cents a day for each book, up to a maximum of ten dollars.",
+     "dur": 6.7
+    },
+    {
+     "f": "audio/c4c01/s010.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "That is reasonable. By the way, does the library lend out laptops during the holidays?",
+     "dur": 7.1
+    },
+    {
+     "f": "audio/c4c01/s011.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Yes, but only for use inside the building. You can borrow one for four hours at the front desk.",
+     "dur": 8.52
+    },
+    {
+     "f": "audio/c4c01/s012.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Can I book a group study room as well? We have a presentation next month.",
+     "dur": 5.4
+    },
+    {
+     "f": "audio/c4c01/s013.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "Group rooms can be reserved online up to seven days in advance, and each session is limited to two hours.",
+     "dur": 8.26
+    },
+    {
+     "f": "audio/c4c01/s014.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "And are e-books affected by the holiday hours?",
+     "dur": 3.58
+    },
+    {
+     "f": "audio/c4c01/s015.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "No, the digital collection is available twenty-four hours a day, so you can download them at any time.",
+     "dur": 8.16
+    },
+    {
+     "f": "audio/c4c01/s016.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "That is very helpful. Thank you for your time.",
+     "dur": 3.62
+    },
+    {
+     "f": "audio/c4c01/s017.mp3",
+     "spk": "F",
+     "voice": "F_TALK",
+     "text": "You are welcome. Have a good summer.",
+     "dur": 4.56
+    }
+   ],
+   "dirText": "In this section, you will hear two long conversations. At the end of each conversation, you will hear four questions. Both the conversation and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c4c01/intro.mp3",
+   "qintro": "audio/c4c01/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c4c01/q000.mp3",
+     "qText": "Question 1. What are the library opening hours on Saturdays?"
+    },
+    {
+     "q": "audio/c4c01/q001.mp3",
+     "qText": "Question 2. What does the man need in order to borrow books?"
+    },
+    {
+     "q": "audio/c4c01/q002.mp3",
+     "qText": "Question 3. How long can undergraduate students keep the books?"
+    },
+    {
+     "q": "audio/c4c01/q003.mp3",
+     "qText": "Question 4. What does the woman say about returning books late?"
+    }
+   ]
+  },
+  "c4c02": {
+   "type": "conversation",
+   "typeLabel": "长对话",
+   "wpm": 135,
+   "gap": 450,
+   "dir": "audio/c4c02/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c4c02/s000.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "Good morning. I am looking for a part-time job on campus. Do I need to make an appointment?",
+     "dur": 8.81
+    },
+    {
+     "f": "audio/c4c02/s001.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "No, walk-ins are fine. What kind of work are you hoping to find?",
+     "dur": 5.04
+    },
+    {
+     "f": "audio/c4c02/s002.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "Something in the library or the student centre, preferably in the evenings.",
+     "dur": 5.81
+    },
+    {
+     "f": "audio/c4c02/s003.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "We have two positions at the moment. One is shelving books, Monday and Wednesday evenings, six to nine.",
+     "dur": 8.45
+    },
+    {
+     "f": "audio/c4c02/s004.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "That sounds possible. What is the other one?",
+     "dur": 5.02
+    },
+    {
+     "f": "audio/c4c02/s005.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "It is at the sports centre reception, but it starts at six in the morning, three days a week.",
+     "dur": 7.08
+    },
+    {
+     "f": "audio/c4c02/s006.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "That is a bit too early for me. Do the jobs pay the same?",
+     "dur": 5.74
+    },
+    {
+     "f": "audio/c4c02/s007.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "The library job pays twelve dollars an hour, and the sports centre pays fourteen because of the early start.",
+     "dur": 8.5
+    },
+    {
+     "f": "audio/c4c02/s008.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "I see. When can I start if I take the library job?",
+     "dur": 5.57
+    },
+    {
+     "f": "audio/c4c02/s009.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Training is next Monday at five, and you would start working the following week.",
+     "dur": 6.22
+    },
+    {
+     "f": "audio/c4c02/s010.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "What are the requirements for the library position?",
+     "dur": 3.96
+    },
+    {
+     "f": "audio/c4c02/s011.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "No previous experience is needed, but you should be able to lift boxes of books and work quietly for long periods.",
+     "dur": 9.31
+    },
+    {
+     "f": "audio/c4c02/s012.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "How many hours a week would that be?",
+     "dur": 3.24
+    },
+    {
+     "f": "audio/c4c02/s013.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Six hours, since it is two evenings of three hours each. You can ask for more after the first month if you want.",
+     "dur": 8.83
+    },
+    {
+     "f": "audio/c4c02/s014.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "And how do I apply? Is there a form?",
+     "dur": 4.68
+    },
+    {
+     "f": "audio/c4c02/s015.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Fill in this form and leave it with me today. We usually interview candidates on Friday and let them know by email.",
+     "dur": 8.71
+    },
+    {
+     "f": "audio/c4c02/s016.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "That all sounds fine. I will take the library job, thank you.",
+     "dur": 6.34
+    },
+    {
+     "f": "audio/c4c02/s017.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Good. Do not forget the training next Monday at five.",
+     "dur": 4.42
+    }
+   ],
+   "dirText": "In this section, you will hear two long conversations. At the end of each conversation, you will hear four questions. Both the conversation and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c4c02/intro.mp3",
+   "qintro": "audio/c4c02/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c4c02/q000.mp3",
+     "qText": "Question 1. Why does the woman come to the office?"
+    },
+    {
+     "q": "audio/c4c02/q001.mp3",
+     "qText": "Question 2. What kind of schedule does the woman prefer?"
+    },
+    {
+     "q": "audio/c4c02/q002.mp3",
+     "qText": "Question 3. How much does the sports centre job pay?"
+    },
+    {
+     "q": "audio/c4c02/q003.mp3",
+     "qText": "Question 4. When would the woman begin working if she takes the library job?"
+    }
+   ]
+  },
+  "c6l01": {
+   "type": "lecture",
+   "typeLabel": "讲座听力",
+   "wpm": 150,
+   "gap": 750,
+   "dir": "audio/c6l01/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c6l01/s000.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "Good morning. Today I want to talk about procrastination, and why intelligent people are often the worst offenders.",
+     "dur": 8.47
+    },
+    {
+     "f": "audio/c6l01/s001.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "For a long time psychologists assumed that putting things off was mainly a problem of poor time management.",
+     "dur": 7.06
+    },
+    {
+     "f": "audio/c6l01/s002.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "If that were true, then a better planner or a longer list of tasks should solve the problem, and most of you know from experience that it does not.",
+     "dur": 9.05
+    },
+    {
+     "f": "audio/c6l01/s003.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "More recent research suggests something different: procrastination is essentially a failure of mood regulation, not of scheduling.",
+     "dur": 8.74
+    },
+    {
+     "f": "audio/c6l01/s004.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "When we delay a task, we are usually not avoiding the task itself. We are avoiding the unpleasant feeling that the task produces.",
+     "dur": 9.58
+    },
+    {
+     "f": "audio/c6l01/s005.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "A difficult report makes us feel incompetent; a difficult conversation makes us feel anxious. Putting the task off removes that feeling immediately, which is why it is so tempting.",
+     "dur": 12.5
+    },
+    {
+     "f": "audio/c6l01/s006.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "Unfortunately, the relief is temporary. The feeling returns, usually stronger, and now it is joined by guilt.",
+     "dur": 9.31
+    },
+    {
+     "f": "audio/c6l01/s007.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "In one study, students who were taught to forgive themselves for procrastinating before an exam actually procrastinated less before the next one.",
+     "dur": 9.22
+    },
+    {
+     "f": "audio/c6l01/s008.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "The researchers compared them with a second group who received no such instruction, and the difference was still measurable several weeks later.",
+     "dur": 8.35
+    },
+    {
+     "f": "audio/c6l01/s009.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "This is important because guilt tends to make people avoid the task even more, which creates a cycle that is difficult to break.",
+     "dur": 8.11
+    },
+    {
+     "f": "audio/c6l01/s010.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "A second line of research looks at how tasks are framed.",
+     "dur": 4.39
+    },
+    {
+     "f": "audio/c6l01/s011.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "When students were asked to plan a project in detail, they began later than those who were asked only to decide where and when they would take the first step.",
+     "dur": 9.19
+    },
+    {
+     "f": "audio/c6l01/s012.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "The reason seems to be that detailed planning exposes how much work lies ahead, which brings the unpleasant feeling forward.",
+     "dur": 8.14
+    },
+    {
+     "f": "audio/c6l01/s013.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "A third finding concerns the environment rather than the individual.",
+     "dur": 4.78
+    },
+    {
+     "f": "audio/c6l01/s014.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "People who removed distractions from their workspace, or who worked in a library rather than at home, reported starting sooner without trying harder.",
+     "dur": 9.31
+    },
+    {
+     "f": "audio/c6l01/s015.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "This suggests that willpower is overrated, and that changing the situation is often more effective than changing your mood.",
+     "dur": 7.97
+    },
+    {
+     "f": "audio/c6l01/s016.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "So what does this mean in practice?",
+     "dur": 3.02
+    },
+    {
+     "f": "audio/c6l01/s017.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "The practical lesson is simple: instead of waiting to feel motivated, break the task into the smallest possible first step and begin.",
+     "dur": 8.83
+    },
+    {
+     "f": "audio/c6l01/s018.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "Do not wait for confidence. In this area, action comes first and motivation follows, not the other way round.",
+     "dur": 9.14
+    },
+    {
+     "f": "audio/c6l01/s019.mp3",
+     "spk": "M",
+     "voice": "M_LECT",
+     "text": "And when you do fail, which you will, treat it as information rather than as evidence about your character.",
+     "dur": 6.84
+    }
+   ],
+   "dirText": "In this section, you will hear three recordings of lectures or talks followed by three or four questions. The recordings will be played only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c6l01/intro.mp3",
+   "qintro": "audio/c6l01/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c6l01/q000.mp3",
+     "qText": "Question 1. What is the lecture mainly about?"
+    },
+    {
+     "q": "audio/c6l01/q001.mp3",
+     "qText": "Question 2. What did the study mentioned by the speaker find?"
+    },
+    {
+     "q": "audio/c6l01/q002.mp3",
+     "qText": "Question 3. What practical advice does the speaker give?"
+    }
+   ]
+  },
+  "c6l02": {
+   "type": "lecture",
+   "typeLabel": "讲座听力",
+   "wpm": 150,
+   "gap": 750,
+   "dir": "audio/c6l02/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c6l02/s000.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Good afternoon. Today we will look at the relationship between sleep and memory.",
+     "dur": 6.36
+    },
+    {
+     "f": "audio/c6l02/s001.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "It has been known for decades that people who sleep after learning remember more than those who stay awake.",
+     "dur": 6.38
+    },
+    {
+     "f": "audio/c6l02/s002.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "What is newer is the discovery that different sleep stages appear to protect different kinds of memory.",
+     "dur": 6.17
+    },
+    {
+     "f": "audio/c6l02/s003.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Let me begin by describing what happens after we fall asleep.",
+     "dur": 4.58
+    },
+    {
+     "f": "audio/c6l02/s004.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Sleep is not a single state. Over the course of a night we move through several cycles, each lasting roughly ninety minutes.",
+     "dur": 9.34
+    },
+    {
+     "f": "audio/c6l02/s005.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Early in the night, deep slow-wave sleep dominates; later, rapid eye movement sleep becomes longer and more frequent.",
+     "dur": 8.23
+    },
+    {
+     "f": "audio/c6l02/s006.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Deep slow-wave sleep seems to be especially important for factual knowledge, such as vocabulary or historical dates.",
+     "dur": 8.06
+    },
+    {
+     "f": "audio/c6l02/s007.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "In one experiment, participants who learned a list of words and then slept recalled about forty per cent more the following morning than a group who stayed awake for the same period.",
+     "dur": 10.54
+    },
+    {
+     "f": "audio/c6l02/s008.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Rapid eye movement sleep, on the other hand, appears to support skills and emotional memory.",
+     "dur": 6.48
+    },
+    {
+     "f": "audio/c6l02/s009.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Studies of piano practice have found that performance improves overnight even without further practice, provided the learner has had enough of this stage.",
+     "dur": 9.36
+    },
+    {
+     "f": "audio/c6l02/s010.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "This is why sleeping less in order to study more is usually a bad trade.",
+     "dur": 5.38
+    },
+    {
+     "f": "audio/c6l02/s011.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "The material you revise while losing sleep is precisely the material that sleep would have helped you keep.",
+     "dur": 6.46
+    },
+    {
+     "f": "audio/c6l02/s012.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "A third finding concerns timing rather than duration.",
+     "dur": 4.32
+    },
+    {
+     "f": "audio/c6l02/s013.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Students who studied in the evening and slept afterwards performed better than those who studied in the morning and were tested the same evening.",
+     "dur": 7.94
+    },
+    {
+     "f": "audio/c6l02/s014.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "The implication is that the interval between learning and sleeping should be kept short, ideally no more than a few hours.",
+     "dur": 7.75
+    },
+    {
+     "f": "audio/c6l02/s015.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "There is one important qualification I should mention.",
+     "dur": 3.89
+    },
+    {
+     "f": "audio/c6l02/s016.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Most of these studies measure retention after a single night, so they tell us relatively little about how much is remembered months later.",
+     "dur": 8.28
+    },
+    {
+     "f": "audio/c6l02/s017.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "Sleep appears to protect memory, but it does not replace the need to review material over time.",
+     "dur": 6.38
+    },
+    {
+     "f": "audio/c6l02/s018.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "The practical implication is clear: if you are preparing for an examination, cutting sleep to gain study time is likely to cost you more than it gains.",
+     "dur": 9.72
+    },
+    {
+     "f": "audio/c6l02/s019.mp3",
+     "spk": "F",
+     "voice": "F_LECT",
+     "text": "A short review in the evening, followed by a full night of sleep, will almost always serve you better than an extra three hours of anxious revision.",
+     "dur": 9.34
+    }
+   ],
+   "dirText": "In this section, you will hear three recordings of lectures or talks followed by three or four questions. The recordings will be played only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c6l02/intro.mp3",
+   "qintro": "audio/c6l02/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c6l02/q000.mp3",
+     "qText": "Question 1. What is the main topic of the lecture?"
+    },
+    {
+     "q": "audio/c6l02/q001.mp3",
+     "qText": "Question 2. According to the lecture, what does deep slow-wave sleep support?"
+    },
+    {
+     "q": "audio/c6l02/q002.mp3",
+     "qText": "Question 3. What does the speaker suggest students should not do?"
+    },
+    {
+     "q": "audio/c6l02/q003.mp3",
+     "qText": "Question 4. According to the lecture, how soon after learning should a person sleep?"
+    }
+   ]
+  },
+  "c6c01": {
+   "type": "conversation",
+   "typeLabel": "长对话",
+   "wpm": 135,
+   "gap": 450,
+   "dir": "audio/c6c01/dir.mp3",
+   "sentences": [
+    {
+     "f": "audio/c6c01/s000.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "Professor Hayes, do you have a moment? I would like to discuss my research proposal with you.",
+     "dur": 7.75
+    },
+    {
+     "f": "audio/c6c01/s001.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Of course, Anna. I read the first draft over the weekend. The topic is interesting, but the method needs more thought.",
+     "dur": 9.62
+    },
+    {
+     "f": "audio/c6c01/s002.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "I was hoping to interview about thirty undergraduate students. Would that be enough?",
+     "dur": 7.13
+    },
+    {
+     "f": "audio/c6c01/s003.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "For a study of this size it is a reasonable start, but the sample may be too narrow to support a general claim.",
+     "dur": 9.48
+    },
+    {
+     "f": "audio/c6c01/s004.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "So I should include students from other universities as well?",
+     "dur": 4.51
+    },
+    {
+     "f": "audio/c6c01/s005.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "That would help. More importantly, you need to explain how you will select them, otherwise the results could be biased.",
+     "dur": 8.95
+    },
+    {
+     "f": "audio/c6c01/s006.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "I see. Should I also reduce the number of research questions? I have five at the moment.",
+     "dur": 8.78
+    },
+    {
+     "f": "audio/c6c01/s007.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Five is ambitious for a one-semester project. I would suggest focusing on two and doing them well.",
+     "dur": 7.92
+    },
+    {
+     "f": "audio/c6c01/s008.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "That makes sense. When would you need the revised proposal?",
+     "dur": 5.69
+    },
+    {
+     "f": "audio/c6c01/s009.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Send it to me by the end of next week. After that we can talk about applying for funding.",
+     "dur": 6.41
+    },
+    {
+     "f": "audio/c6c01/s010.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "Should I include a separate section on previous studies?",
+     "dur": 4.42
+    },
+    {
+     "f": "audio/c6c01/s011.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Yes, but keep it short. Two pages is enough to show you know the field, and it will make your own contribution clearer.",
+     "dur": 9.77
+    },
+    {
+     "f": "audio/c6c01/s012.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "I have found about forty papers, but I am not sure which ones matter most.",
+     "dur": 5.93
+    },
+    {
+     "f": "audio/c6c01/s013.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Start with the five or six that are cited most often. If two papers reach opposite conclusions, mention both and explain why.",
+     "dur": 10.94
+    },
+    {
+     "f": "audio/c6c01/s014.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "That is helpful. How much time should I allow for the interviews themselves?",
+     "dur": 6.74
+    },
+    {
+     "f": "audio/c6c01/s015.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Give yourself at least three weeks. People cancel, and transcribing what they say always takes longer than students expect.",
+     "dur": 10.06
+    },
+    {
+     "f": "audio/c6c01/s016.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "I had not thought about transcription. Should I record them?",
+     "dur": 5.74
+    },
+    {
+     "f": "audio/c6c01/s017.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "You may record them, but you must ask each person for written permission first. That is a requirement, not a choice.",
+     "dur": 9.48
+    },
+    {
+     "f": "audio/c6c01/s018.mp3",
+     "spk": "W",
+     "voice": "F_TALK",
+     "text": "Understood. I will prepare a consent form.",
+     "dur": 5.14
+    },
+    {
+     "f": "audio/c6c01/s019.mp3",
+     "spk": "M",
+     "voice": "M_TALK",
+     "text": "Good. Bring the form and your revised questions to our next meeting, and we will go through them together.",
+     "dur": 8.23
+    }
+   ],
+   "dirText": "In this section, you will hear two long conversations. At the end of each conversation, you will hear four questions. Both the conversation and the questions will be spoken only once. After you hear a question, you must choose the best answer from the four choices marked A), B), C) and D). Then mark the corresponding letter on Answer Sheet 1 with a single line through the centre.",
+   "intro": "audio/c6c01/intro.mp3",
+   "qintro": "audio/c6c01/qintro.mp3",
+   "questions": [
+    {
+     "q": "audio/c6c01/q000.mp3",
+     "qText": "Question 1. Why does the woman talk to the professor?"
+    },
+    {
+     "q": "audio/c6c01/q001.mp3",
+     "qText": "Question 2. What does the man say about the woman sample?"
+    },
+    {
+     "q": "audio/c6c01/q002.mp3",
+     "qText": "Question 3. What does the man suggest about the research questions?"
+    },
+    {
+     "q": "audio/c6c01/q003.mp3",
+     "qText": "Question 4. What should the woman do by the end of next week?"
+    }
+   ]
+  }
+ },
+ "generatedAt": "2026-08-31 00:19:46"
+}
