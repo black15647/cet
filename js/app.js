@@ -283,7 +283,7 @@ VIEWS.article = function (id) {
         <div class="para" id="para-${i}">
           <span class="para-no">¶${i + 1}</span>
           <p>${highlightLong(p.en, a)}</p>
-          <details class="zh"><summary>参考译文</summary><p>${esc(p.zh)}</p></details>
+          ${p.zh ? `<details class="zh"><summary>参考译文</summary><p>${esc(p.zh)}</p></details>` : '<p class="muted">（真题原文，暂无官方参考译文；建议对照解析版）</p>'}
         </div>`).join('')}
     </div>
 
@@ -307,6 +307,7 @@ function escapeRegExp(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&
    （如冒号后）而小写开头，严格匹配会导致拆解入口失效。 */
 function highlightLong(text, a) {
   let html = esc(text);
+  if (!a.longSentences) return html;
   a.longSentences.forEach((ls, i) => {
     const re = new RegExp(escapeRegExp(esc(ls.text)), 'i');
     if (re.test(html)) {
@@ -382,7 +383,7 @@ function submitReading() {
     ex.style.display = 'block';
     ex.innerHTML = `
       <p class="${ok ? 'ok-msg' : 'err-msg'}">${ok ? '✓ 回答正确' : `✗ 你的答案 ${ua || '未作答'}，正确答案 ${q.answer}`}</p>
-      <p>📍 <b>题干定位：</b>第 ${q.locate} 段 <a href="javascript:void(0)" onclick="flashPara(${q.locate - 1})">[高亮定位段]</a>${(q.tags && q.tags.length) ? `　🏷 ${q.tags.map(esc).join(' / ')}` : ''}</p>
+      ${q.locate ? `<p>📍 <b>题干定位：</b>第 ${q.locate} 段 <a href="javascript:void(0)" onclick="flashPara(${q.locate - 1})">[高亮定位段]</a></p>` : ''}${q.tags && q.tags.length ? `<p>🏷 ${q.tags.map(esc).join(' / ')}</p>` : ''}
       ${q.basis ? `<p><b>✅ 正确依据：</b>${esc(q.basis)}</p>` : ''}
       ${wrongList(q) ? (ok
         ? `<details><summary>🚫 干扰项分析（答对也建议看）</summary><ul>${wrongList(q)}</ul></details>`
@@ -1062,6 +1063,70 @@ function checkListenQuestions(id) {
 }
 
 /* ---------- 词汇 / 生词本 ---------- */
+/* ---------- 选词填空 / 完形（CET 词汇理解 Section A）---------- */
+VIEWS.cloze = function (id) {
+  if (id) return clozeDetail(id);
+  const list = (DB.cloze || []).filter(c => c.exam === S.exam);
+  app.innerHTML = `
+    <div class="page-head">
+      <h1>🔤 选词填空（完形）· ${EXAM_NAMES[S.exam]}</h1>
+    </div>
+    <p class="muted">共 ${list.length} 篇真题。点击进入：从右侧 15 词词库中各选一词填入 10 个空格，每词限用一次，提交后核对答案。</p>
+    <div class="list">
+      ${list.map(c => `
+        <div class="list-item">
+          <div>
+            <span class="tag lv3">真题</span>
+            <b>${esc(c.title)}</b>
+            <div class="muted">${esc(c.topic)} · 10 空 / 15 词库</div>
+            <div class="muted">${esc(c.source)}</div>
+          </div>
+          <button class="btn" onclick="go('cloze','${c.id}')">进入</button>
+        </div>`).join('') || '<p class="muted">该考试暂无选词填空真题，请切换考试类型。</p>'}
+    </div>`;
+};
+
+function clozeDetail(id) {
+  const c = (DB.cloze || []).find(x => x.id === id);
+  if (!c) return go('cloze');
+  const html = esc(c.passage).replace(/\{\{(\d+)\}\}/g, (m, num) =>
+    `<select class="clz" data-b="${num}"><option value="">（空${num}）</option>${(c.wordBank || []).map(w => `<option value="${w.letter}">${w.letter}) ${esc(w.word)}</option>`).join('')}</select>`);
+  app.innerHTML = `
+    <a class="back" href="#cloze">← 返回选词填空列表</a>
+    <div class="page-head"><h1>${esc(c.title)}</h1></div>
+    <div class="card"><p class="muted">${esc(c.directions)}</p></div>
+    <div class="card article">${html}</div>
+    <div class="card">
+      <h2>词库（15 选 10，每个词限用一次）</h2>
+      <div class="clz-bank">${(c.wordBank || []).map(w => `<span class="clz-w"><b>${w.letter})</b> ${esc(w.word)}${w.pos ? ` <i>${esc(w.pos)}</i>` : ''}</span>`).join('')}</div>
+    </div>
+    <button class="btn" onclick="submitCloze('${c.id}')">提交答案</button>
+    <div id="clz-result"></div>`;
+}
+
+function submitCloze(id) {
+  const c = (DB.cloze || []).find(x => x.id === id);
+  if (!c) return;
+  const total = Object.keys(c.answers || {}).length;
+  let correct = 0;
+  document.querySelectorAll('.clz').forEach(sel => {
+    const b = sel.dataset.b, ua = sel.value, ans = c.answers[b];
+    sel.classList.remove('right', 'wrong');
+    if (ua === ans) { correct++; sel.classList.add('right'); }
+    else sel.classList.add('wrong');
+  });
+  const pct = total ? Math.round(correct / total * 100) : 0;
+  document.getElementById('clz-result').innerHTML = `
+    <div class="result ${correct === total ? 'perfect' : ''}">
+      <b>本次成绩：${correct} / ${total}（${pct}%）</b>
+      <span class="muted">提交后可展开查看答案</span>
+    </div>
+    <details><summary>查看答案与解析</summary>
+      <ul>${(Object.entries(c.answers) || []).map(([b, a]) => `<li>空 ${b}：<b>${a})</b> ${esc((c.wordBank.find(w => w.letter === a) || {}).word || '')}</li>`).join('')}</ul>
+    </details>`;
+  rec('clozeDone', 1); rec('clozeTotal', total); rec('clozeCorrect', correct); save();
+}
+
 VIEWS.vocab = function () {
   const due = dueWords();
   app.innerHTML = `
@@ -1466,8 +1531,20 @@ function mergeBankSection(bank, keys) {
 
 /* ---------- 真题库：与模拟题分开存放，合并进运行时 DB ---------- */
 function mergeRealExam() {
-  return mergeBankSection(typeof REAL_EXAM !== 'undefined' ? REAL_EXAM : null,
+  const n = mergeBankSection(typeof REAL_EXAM !== 'undefined' ? REAL_EXAM : null,
     ['translations', 'writings', 'listenings']);
+  if (!DB.cloze) DB.cloze = [];
+  // 真题阅读并入 articles，使其在现有阅读模块中按考试出现（考研模式阅读列表直接可见）
+  if (typeof REAL_EXAM !== 'undefined' && REAL_EXAM.readings) {
+    REAL_EXAM.readings.forEach(r => { if (!DB.articles.some(x => x.id === r.id)) DB.articles.push(r); });
+  }
+  // 真题选词填空并入 cloze，独立模块（CET 词汇理解 Section A）
+  if (typeof REAL_EXAM !== 'undefined' && REAL_EXAM.cloze) {
+    REAL_EXAM.cloze.forEach(c => { if (!DB.cloze.some(x => x.id === c.id)) DB.cloze.push(c); });
+  }
+  return n
+    + (typeof REAL_EXAM !== 'undefined' && REAL_EXAM.readings ? REAL_EXAM.readings.length : 0)
+    + (typeof REAL_EXAM !== 'undefined' && REAL_EXAM.cloze ? REAL_EXAM.cloze.length : 0);
 }
 /* 第二批：阅读扩充（自编模拟，带知识点标签与正确依据） */
 function mergeBank2() {

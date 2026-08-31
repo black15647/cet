@@ -318,3 +318,12 @@ body.reading-mode .rm-bar { display: flex; }
 .lq-result:empty { display: none; }
 .opt.right { background: rgba(36, 138, 61, .12); border-color: var(--ok); }
 .opt.wrong { background: rgba(215, 0, 21, .1); border-color: var(--err); }
+
+/* 选词填空 / 完形（CET 词汇理解 Section A） */
+.clz { display: inline-block; min-width: 92px; margin: 2px 4px; padding: 4px 8px; font-size: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: inherit; vertical-align: middle; }
+.clz.right { border-color: var(--ok); background: rgba(36, 138, 61, .12); }
+.clz.wrong { border-color: var(--err); background: rgba(215, 0, 21, .1); }
+.clz-bank { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 14px; line-height: 1.9; }
+.clz-w { display: inline-flex; gap: 5px; align-items: baseline; }
+.clz-w b { color: var(--brand); }
+.clz-w i { font-style: normal; opacity: .6; font-size: 12px; }
