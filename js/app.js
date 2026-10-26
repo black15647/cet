@@ -15,6 +15,7 @@ const defaultState = {
   wrongBook: [],    // {id, articleId, qIndex, userAns, correct, time}
   vocab: {},        // {word: {added, box, next}}
   done: {},         // 题目完成标记: {readingDone: {articleId: true}, transDone: {id: true}, writDone:{id:true}}
+  books: {},        // 活书进度: {bookId: {readChaps:[], quiz:{qKey:userAns}, fc:{word:true}}}
 };
 
 function loadState() {
@@ -1577,7 +1578,229 @@ function ensureTags() {
   });
 }
 
-/* ---------- 启动 ---------- */
+/* ============================================================
+ * 活书（Living Book）视图
+ * 数据与块定义见 js/books.js（BOOK_DEFS），此处只做渲染与交互。
+ * ============================================================ */
+VIEWS.books = function () {
+  const cards = BOOK_DEFS.map(b => {
+    const p = bkProgress(b);
+    const pct = p.total ? Math.round(p.done / p.total * 100) : 0;
+    const st = bkState(b.id);
+    const last = st.lastChap != null ? st.lastChap : 0;
+    return `
+      <div class="card bk-shelf-card">
+        <div class="bk-shelf-head">
+          <span class="bk-cover">${b.cover}</span>
+          <div>
+            <b>${esc(b.title)}</b>
+            <p class="muted">${esc(b.desc)}</p>
+            <div class="bar" style="margin:6px 0"><div class="bar-fill" style="width:${pct}%"></div></div>
+            <span class="muted">进度：${p.done}/${p.total} 章 · ${pct}%${p.done ? ` · 继续读第 ${last + 1} 章` : ' · 从第 1 章开始'}</span>
+          </div>
+        </div>
+        <div class="bk-actions">
+          <button class="btn" onclick="go('book','${b.id}')">${p.done ? '📖 继续读' : '📖 开始读'}</button>
+          <span class="muted">${b.chapters.length} 章</span>
+        </div>
+      </div>`;
+  }).join('');
+  app.innerHTML = `
+    <div class="hero"><div>
+      <h1>📚 活书</h1>
+      <p class="sub">把真题和词汇重构成"可交互的活教材"：分块阅读、即时判分、进度记忆。内容取自本工具已核验的题库，单一事实源。</p>
+    </div></div>
+    ${cards}`;
+};
+
+VIEWS.book = function (bid) {
+  const book = bkBook(bid);
+  if (!book) { app.innerHTML = '<p class="muted">未找到这本书。</p>'; return; }
+  document.querySelectorAll('.nav a').forEach(a => a.classList.toggle('active', a.dataset.view === 'books'));
+  const st = bkState(bid);
+  if (st.lastChap == null) st.lastChap = 0;
+  const ci = Math.min(st.lastChap, book.chapters.length - 1);
+  const chap = book.chapters[ci];
+  const p = bkProgress(book);
+  const pct = p.total ? Math.round(p.done / p.total * 100) : 0;
+
+  const chapsNav = book.chapters.map((c, i) => {
+    const done = st.readChaps.includes(i);
+    return `<button class="bk-chap-pill ${i === ci ? 'cur' : ''}" onclick="bkGoChap('${bid}',${i})">
+      ${done ? '✓' : i + 1} ${esc(c.title.length > 10 ? c.title.slice(0, 10) + '…' : c.title)}</button>`;
+  }).join('');
+
+  const blocksHtml = chap.blocks.map(bkRenderBlock.bind(null, book, ci)).join('\n');
+  const isRead = st.readChaps.includes(ci);
+
+  app.innerHTML = `
+    <div class="bk-topbar">
+      <a class="back" href="#books">← 书架</a>
+      <div class="bk-progress"><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div><span class="muted">${p.done}/${p.total} 章</span></div>
+    </div>
+    <div class="card bk-head">
+      <span class="bk-cover">${book.cover}</span>
+      <div><b>${esc(book.title)}</b><p class="muted">${esc(chap.title)}（第 ${ci + 1} / ${book.chapters.length} 章）</p></div>
+    </div>
+    <div class="bk-chaps">${chapsNav}</div>
+    <div class="bk-body">${blocksHtml}</div>
+    <div class="bk-foot">
+      <button class="btn ${isRead ? 'ghost' : ''}" onclick="bkMarkChap('${bid}',${ci})">${isRead ? '✓ 本章已读' : '标记本章已读'}</button>
+      ${ci > 0 ? `<button class="btn ghost" onclick="bkGoChap('${bid}',${ci - 1})">← 上一章</button>` : ''}
+      ${ci < book.chapters.length - 1 ? `<button class="btn" onclick="bkGoChap('${bid}',${ci + 1})">下一章 →</button>` : `<span class="ok-msg">🎉 全书读完！</span>`}
+    </div>`;
+};
+
+function bkRenderBlock(book, ci, b) {
+  const bid = book.id;
+  const st = bkState(bid);
+  if (b.type === 'callout') {
+    return `<div class="bk-callout"><span class="bk-co-icon">${b.icon || '💡'}</span>
+      <div><b>${esc(b.title || '')}</b><p>${esc(b.text)}</p></div></div>`;
+  }
+  if (b.type === 'link') {
+    return `<a class="bk-link" href="${b.href}">${esc(b.text)}</a>`;
+  }
+  if (b.type === 'text') {
+    const w = bkFind('writings', b.from.writing);
+    if (!w) return bkMissing(b.from.writing);
+    return `<div class="bk-block"><div class="bk-bt">${esc(b.title || '')}</div>
+      <p class="bk-prompt">${esc(w.prompt)}</p></div>`;
+  }
+  if (b.type === 'list') {
+    const w = bkFind('writings', b.from.writing);
+    if (!w || !Array.isArray(w[b.part])) return '';
+    return `<div class="bk-block"><div class="bk-bt">${esc(b.title || '')}</div>
+      <ul class="bk-ul">${w[b.part].map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  }
+  if (b.type === 'paras') {
+    const a = bkFind('articles', b.from.reading);
+    if (!a) return bkMissing(b.from.reading);
+    return `<div class="bk-block"><div class="bk-bt">${esc(a.title)}</div>
+      <span class="tag">${esc(a.topic)}</span>
+      ${a.paragraphs.map(p => `<p class="bk-para">${esc(p.en)}</p>${p.zh ? `<p class="bk-zh">${esc(p.zh)}</p>` : ''}`).join('')}</div>`;
+  }
+  if (b.type === 'quiz') {
+    const a = bkFind('articles', b.from.reading);
+    if (!a) return bkMissing(b.from.reading);
+    const items = a.questions.map((q, qi) => {
+      const qKey = a.id + '#' + qi;
+      const user = st.quiz[qKey];
+      const answered = user != null;
+      const opts = ['A', 'B', 'C', 'D'].map(k => {
+        let cls = 'bk-opt';
+        if (answered) {
+          if (k === q.answer) cls += ' right';
+          else if (k === user) cls += ' wrong';
+          else cls += ' dim';
+        }
+        return `<button class="${cls}" ${answered ? 'disabled' : ''}
+          onclick="bkPick('${bid}','${qKey}','${k}','${q.answer}','bq-${hash(qKey)}')">${k}. ${esc(q.options[k])}</button>`;
+      }).join('');
+      const fb = answered
+        ? (user === q.answer
+          ? '<p class="ok-msg">✓ 回答正确</p>'
+          : `<p class="err-msg">✗ 你选了 ${user}，正确答案是 ${q.answer}</p>`)
+        : '';
+      return `<div class="bk-q" id="bq-${hash(qKey)}">
+        <p class="bk-qs">${qi + 1}. ${esc(q.q)}</p>
+        <div class="bk-opts">${opts}</div>${fb}</div>`;
+    }).join('');
+    return `<div class="bk-block"><div class="bk-bt">📝 真题练习 · ${esc(a.title)}（${a.questions.length} 题）</div>${items}</div>`;
+  }
+  if (b.type === 'cloze') {
+    const c = bkFind('cloze', b.from.cloze);
+    if (!c) return bkMissing(b.from.cloze);
+    const passage = esc(c.passage).replace(/\{\{(\d{2})\}\}/g, '<span class="bk-blank">__$1__</span>');
+    const bank = c.wordBank.map(w => `<span class="bk-word"><b>${w.letter}</b> ${esc(w.word)} <i>${esc(w.pos)}</i></span>`).join('');
+    const ans = Object.keys(c.answers).sort().map(k => `${k}→${c.answers[k]}`).join(' · ');
+    return `<div class="bk-block"><div class="bk-bt">${esc(c.title)}</div>
+      <p class="bk-prompt">${passage}</p>
+      <div class="bk-bank">${bank}</div>
+      <details class="bk-details"><summary>查看答案</summary><p class="muted">${ans}</p></details></div>`;
+  }
+  if (b.type === 'trans') {
+    const t = bkFind('translations', b.from.trans);
+    if (!t) return bkMissing(b.from.trans);
+    return `<div class="bk-block"><div class="bk-bt">${esc(t.topic)}</div>
+      <p class="bk-para">${esc(t.source)}</p>
+      <details class="bk-details"><summary>查看参考译文</summary><p class="bk-para">${esc(t.reference)}</p></details>
+      ${t.keywords && t.keywords.length ? `<div class="bk-bt">关键表达</div><div class="bk-bank">${t.keywords.map(k => `<span class="bk-word">${esc(k)}</span>`).join('')}</div>` : ''}
+      ${t.commonErrors && t.commonErrors.length ? `<div class="bk-bt">常见错误</div><ul class="bk-ul">${t.commonErrors.map(e => `<li>${esc(e)}</li>`).join('')}</ul>` : ''}
+      </div>`;
+  }
+  if (b.type === 'flashcards') {
+    let words = (DB.vocab || []).filter(v => !b.from.vocabExam || v.exam === b.from.vocabExam);
+    if (b.range) words = words.slice(b.range[0], b.range[1]);
+    const cards = words.map((v, i) => {
+      const known = st.fc[v.word];
+      const inVocab = !!S.vocab[v.word];
+      return `<div class="bk-fc" id="bfc-${hash(v.word)}">
+        <div class="bk-fc-inner" onclick="bkFlip('bfc-${hash(v.word)}')">
+          <div class="bk-fc-front"><b>${esc(v.word)}</b><i>${esc(v.pos || '')}</i><span class="muted">点卡片翻面</span></div>
+          <div class="bk-fc-back"><b>${esc(v.meaning)}</b>${v.example ? `<p class="muted">${esc(v.example)}</p>` : ''}</div>
+        </div>
+        <div class="bk-fc-actions">
+          ${inVocab ? '<span class="muted">已在生词本</span>' : `<button class="btn small" onclick="bkAddWord('${esc(v.word)}')">＋ 加入生词本</button>`}
+          <button class="btn small ghost" onclick="bkKnow('${bid}','${esc(v.word)}',this)">${known ? '✓ 已认识' : '认识了'}</button>
+        </div></div>`;
+    }).join('');
+    return `<div class="bk-block"><div class="bk-bt">🎴 闪卡（${words.length} 张）</div>
+      <p class="muted">先回想词义再翻面；不认识的点「＋ 加入生词本」，会进生词本走间隔复习。</p>
+      <div class="bk-fc-grid">${cards}</div></div>`;
+  }
+  return '';
+}
+
+function bkMissing(id) { return `<p class="err-msg">⚠️ 未找到数据源 ${esc(id)}，题库可能未加载。</p>`; }
+
+/* ---------- 交互 ---------- */
+function bkGoChap(bid, i) {
+  const st = bkState(bid);
+  st.lastChap = i;
+  save();
+  VIEWS.book(bid);
+  window.scrollTo(0, 0);
+}
+function bkMarkChap(bid, i) {
+  const st = bkState(bid);
+  if (!st.readChaps.includes(i)) st.readChaps.push(i);
+  save();
+  VIEWS.book(bid);
+}
+function bkPick(bid, qKey, letter, answer, containerId) {
+  const st = bkState(bid);
+  if (st.quiz[qKey] != null) return;
+  st.quiz[qKey] = letter;
+  save();
+  const box = document.getElementById(containerId);
+  if (!box) return;
+  box.querySelectorAll('.bk-opt').forEach(btn => {
+    btn.disabled = true;
+    const k = btn.textContent.slice(0, 1);
+    if (k === answer) btn.classList.add('right');
+    else if (k === letter) btn.classList.add('wrong');
+    else btn.classList.add('dim');
+  });
+  const fb = document.createElement('div');
+  fb.innerHTML = letter === answer
+    ? '<p class="ok-msg">✓ 回答正确</p>'
+    : `<p class="err-msg">✗ 你选了 ${letter}，正确答案是 ${answer}</p>`;
+  box.appendChild(fb);
+}
+function bkFlip(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('flipped');
+}
+function bkAddWord(word) { addWord(word); VIEWS.book(location.hash.slice(1).split('/')[1]); }
+function bkKnow(bid, word, btn) {
+  const st = bkState(bid);
+  st.fc[word] = true;
+  save();
+  btn.textContent = '✓ 已认识';
+  btn.disabled = true;
+}
+
 VIEWS.review = VIEWS.vocab; // #review 兼容
 const _customCount = loadCustomBank();   // 合并自定义（导入）题库
 const _realCount = mergeRealExam();      // 合并真题库
